@@ -24,10 +24,3 @@ app.listen(port, function onStart(err) {
   console.info('Server started on port %s.', port)
 })
 
-// Database Connection URL
-const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mernSimpleSetup'
-// Use connect method to connect to the server
-MongoClient.connect(url, (err, db)=>{
-  console.log("Connected successfully to mongodb server")
-  db.close()
-})
