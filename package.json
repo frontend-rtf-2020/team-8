@@ -1,8 +1,8 @@
 {
-  "name": "mern-simplesetup",
+  "name": "tinkoff-messenger",
   "version": "1.0.0",
-  "description": "A quick check for your MERN stack installation",
-  "author": "Shama Hoque",
+  "description": "Tinkoff-application",
+  "author": "Cool Team",
   "license": "MIT",
   "keywords": [
     "react",
@@ -13,9 +13,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/shamahoque/mern-simplesetup.git"
+    "url": "https://github.com/frontend-rtf-2020/team-8.git"
   },
-  "homepage": "https://github.com/shamahoque/mern-simplesetup",
+  "homepage": "https://github.com/frontend-rtf-2020/team-8",
   "main": "template.js",
   "scripts": {
     "development": "nodemon",
