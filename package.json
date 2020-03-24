@@ -20,7 +20,7 @@
   "scripts": {
     "development": "nodemon",
     "build": "webpack --config webpack.config.client.production.js && webpack --mode=production --config webpack.config.server.js",
-    "start": "set NODE_ENV=production node ./dist/server.generated.js"
+    "start": "NPM_CONFIG_PRODUCTION=true YARN_PRODUCTION=true node ./dist/server.generated.js"
   },
   "engines": {
     "node": "8.11.1",
