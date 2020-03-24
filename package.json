@@ -20,7 +20,7 @@
   "scripts": {
     "development": "nodemon",
     "build": "webpack --config webpack.config.client.production.js && webpack --mode=production --config webpack.config.server.js",
-    "start": "heroku config:set NPM_CONFIG_PRODUCTION=true node ./dist/server.generated.js"
+    "start": "node ./dist/server.generated.js"
   },
   "engines": {
     "node": "8.11.1",
@@ -32,7 +32,12 @@
     "mongodb": "^3.0.7",
     "react": "^16.3.2",
     "react-dom": "^16.3.3",
-    "react-hot-loader": "^4.1.2"
+    "react-hot-loader": "^4.1.2",
+    "webpack-dev-middleware": "^3.1.2",
+    "webpack-hot-middleware": "^2.22.1",
+    "webpack-node-externals": "^1.7.2",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
   },
   "devDependencies": {
     "babel-core": "^6.26.2",
@@ -40,11 +45,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "nodemon": "^1.17.3",
-    "webpack-dev-middleware": "^3.1.2",
-    "webpack-hot-middleware": "^2.22.1",
-    "webpack-node-externals": "^1.7.2",
-    "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.15"
+    "nodemon": "^1.17.3"
+
   }
 }
