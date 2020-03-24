@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
 
-class HelloWorld extends Component {
+class Home extends Component {
   render() {
     return (
         <div>
-          <h1>Hello Worlds!</h1>
+          <h1>Домашняя страница</h1>
         </div>
       )
   }
 }
 
-export default hot(module)(HelloWorld)
+export default hot(module)(Home)
