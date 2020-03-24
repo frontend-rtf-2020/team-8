@@ -1,16 +1,17 @@
 import React, {Component} from 'react'
 import {Route, Switch} from 'react-router-dom'
 import Home from './core/Home'
-import signin from './auth/Signin'
-import signup from './user/Signup'
+import Signin from './auth/Signin'
+import Signup from './user/Signup'
 
 class MainRouter extends Component {
   render() {
-    return (<div>
+    return (
+    <div>
       <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/signin" component={signin}/>
-        <Route path="/signup" component={signup}/>
+        <Route exact path="/" component={Home}/> 
+        <Route path="/signin" component={Signin}/>
+        <Route path="/signup" component={Signup}/>
       </Switch>
     </div>)
   }
