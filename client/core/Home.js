@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
+import './../assets/styles/style.css'
 
 class Home extends Component {
   render() {
