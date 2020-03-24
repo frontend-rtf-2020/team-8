@@ -40,17 +40,14 @@ app.use(helmet())
 //включить CORS - обмен ресурсами между источниками
 app.use(cors())
 
-app.get('/', (req, res) => {
-  res.status(200).send(Template())
-})
-
 app.get('*', (req, res) => {
   const context = {} 
   const markup = ReactDOMServer.renderToString(
-      <StaticRouter location={req.url} context={context}>
-            <MainRouter/>
-      </StaticRouter>
-) 
+    <StaticRouter location={req.url} context={context}>
+      <MainRouter/>
+    </StaticRouter>
+  ) 
+
   if (context.url) {
     return res.redirect(303, context.url)
   }
