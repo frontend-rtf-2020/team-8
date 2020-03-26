@@ -23,14 +23,7 @@ const config = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    {
-                        loader: 'css-loader',
-                        options: {
-                          modules: true,
-                        }
-                    }
-                ]
+                use: ['css-loader']
             }
         ]
     }
