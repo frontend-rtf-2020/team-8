@@ -28,27 +28,32 @@ import authRoutes from './routes/auth.routes'
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
 
+if (process.env.NODE_ENV === "development") {
 //закомментировать перед сборкой для production
-devBundle.compile(app)
+  devBundle.compile(app)
+}
 
-app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
-app.use('/', userRoutes)
-app.use('/', authRoutes)
-app.use((err, req, res, next) => {
-  if (err.name === 'UnauthorizedError') {
-  res.status(401).json({"error" : err.name + ": " + err.message})
-  }
- }) 
 
 //парскер body параметров и передача в req.body
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(compress())
 //защищать приложения, устанавливая различные заголовки HTTP
 app.use(helmet())
 //включить CORS - обмен ресурсами между источниками
 app.use(cors())
+
+app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
+
+app.use('/', userRoutes)
+app.use('/', authRoutes)
+
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+  res.status(401).json({"error" : err.name + ": " + err.message})
+  }
+ }) 
 
 app.get('*', (req, res) => {
   const context = {} 
