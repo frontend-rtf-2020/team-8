@@ -1,12 +1,8 @@
 const config = {
-    env: process.env.NODE_ENV || 'development',
-    port: process.env.PORT || 3000,
-    jwtSecret: process.env.JWT_SECRET || "YOUR_secret_key",
-    /*mongoUri: process.env.MONGODB_URI ||
-      process.env.MONGO_HOST ||
-      'mongodb://' + (process.env.IP || 'localhost') + ':' +
-      (process.env.MONGO_PORT || '27017') +
-      '/mernproject'*/
-  }
-  
-  export default config
+  env: process.env.NODE_ENV || 'development',
+  port: process.env.PORT || 3000,
+  jwtSecret: process.env.JWT_SECRET || "YOUR_secret_key",
+  mongoUri: 'mongodb+srv://team:QgOVTyn4wOcG8MbV@users-f5jfa.mongodb.net/test?retryWrites=true&w=majority'
+}
+
+export default config
