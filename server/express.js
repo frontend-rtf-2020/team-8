@@ -33,7 +33,6 @@ if (process.env.NODE_ENV === "development") {
   devBundle.compile(app)
 }
 
-
 //парскер body параметров и передача в req.body
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
