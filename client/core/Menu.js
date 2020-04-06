@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { hot } from 'react-hot-loader'
 
 function Menu() {
     return(
@@ -19,4 +18,4 @@ function Menu() {
         </div>)
 }
 
-export default hot(module)(Menu);
+export default Menu
