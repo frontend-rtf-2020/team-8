@@ -6,8 +6,9 @@ export default ({markup}) => {
            <title>iTinkoff</title>
         </head>
         <body>
-          <div id="root">${markup}</div>
           <script type="text/javascript" src="/dist/bundle.js"></script>
+          <div id="root">${markup}</div>
+
         </body>
     </html>`
 }
