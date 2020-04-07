@@ -11,13 +11,15 @@
     "start": "npm run prod",
     "build": "npm-run-all clean transpile",
     "server": "node ./dist/bin/server",
-    "dev": "npm-run-all transpile server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm-run-all transpile server\" \"npm run client\"",
     "prod": "npm run build",
     "transpile": "babel ./server --out-dir dist",
     "clean": "rimraf dist",
     "watch:dev": "nodemon"
   },
   "dependencies": {
+    "concurrently": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -32,12 +34,20 @@
     "rimraf": "^3.0.2"
   },
   "babel": {
-    "presets": ["@babel/preset-env"]
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
-  "nodemonConfig": { 
+  "nodemonConfig": {
     "exec": "npm run dev",
-    "watch": ["server/*", "public/*"],
-    "ignore": ["**/__tests__/**", "*.test.js", "*.spec.js"]
+    "watch": [
+      "server/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
   }
-
 }
