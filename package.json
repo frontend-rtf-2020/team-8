@@ -1,9 +1,15 @@
 {
   "name": "create-react-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "MERN",
+    "React",
+    "MongoDb",
+    "Express",
+    "NodeJS"
+  ],
+  "author": "Popov Alexander, Popov Daniil, Volozhanin Stanislav, Baygulov Dmitri, Golenzev Yakov",
   "license": "MIT",
   "description": "Tinkoff-messenger MERN applcation for learn",
   "main": "app.js",
