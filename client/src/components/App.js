@@ -4,7 +4,7 @@ import '../stylesheets/App.css';
 function App() {
   return (
     <Fragment>
-      <h1>Welcome to new life</h1>
+      <h1>Welcome to my life!</h1>
     </Fragment>
   );
 }
