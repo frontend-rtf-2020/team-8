@@ -4,8 +4,13 @@ import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import path from 'path'
 
+import connectDB from './config/db';
 
-let app = express();
+
+const app = express();
+
+//Connect database
+connectDB();
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(express.json());
