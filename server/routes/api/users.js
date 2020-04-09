@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import { check, validationResult } from 'express-validator';
 import User from '../../models/User';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import config from '../../config/config';
 
 const router = express.Router();
 
@@ -40,8 +42,22 @@ router.post('/register', [
 
         await user.save();
 
-        //Return jsonwebtoken
-        res.send('Successfully registered!')
+        const payload = {
+            user: {
+                id: user.id
+            }
+        };
+        
+        jwt.sign(
+            payload, 
+            config.jwtSecret, 
+            { expiresIn: 3600 },
+            (err, token) => {
+                if (err) throw err;
+                res.json({ token });
+            }
+        );
+
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
