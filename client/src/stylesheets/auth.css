@@ -1,0 +1,173 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
+
+.Auth{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+    padding-top: 100px;
+}
+.Auth > div {
+    width: 100%;
+    max-width: 600px;
+    padding: 0 20px;
+}
+.Auth h1 {
+    color: #212121;
+    font-size: 50px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.Auth h2 {
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    color: #707070;
+    margin-bottom: 10%;
+}
+.Auth span.left{
+    height: 20px;
+    font-weight: 300;
+    font-size: 20px;
+    /* color: #F44336; */
+    color: #707070;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    padding-left: 2.75rem;
+}
+.Auth span.right{
+    height: 20px;
+    font-weight: 300;
+    font-size: 20px;
+    /* color: #F44336; */
+    color: #707070;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: flex-end;
+    padding-right: 2.75rem;
+}
+.Auth span.center{
+    height: 20px;
+    font-weight: 300;
+    font-size: 20px;
+    /* color: #F44336; */
+    color: #707070;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.Auth p {
+    position: absolute;
+    bottom: 3%;
+    left: 6%;
+    font-size: 20px;
+    font-weight: 300;
+    color: #707070;
+}
+.Auth form {
+    width: 100%;
+    background: #F9F9F9;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(40,37,58,0.58);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+/* Стили для email */
+.Auth form input[type=email] {
+    margin-top: 55px;
+    width: 80%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 30px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: border 2s ease 0s;
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+.Auth form input[type=email]:focus {
+    border: 1px solid #707070;
+    transition: border 2s ease 0s;
+}
+.Auth form input[type=email]:valid {
+    border: 1px solid #02D488;
+    background-image: url(../img/accept.svg);
+    transition: border 2s ease 0s;
+    transition: background-image 2s ease 0s;
+}
+.Auth form input[type=email]:focus:invalid {
+    border: 1px solid #F44336;
+    background-image: url(../img/accept.svg);
+    transition: border 2s ease 0s;
+    transition: background-image 2s ease 0s;
+}
+.Auth form input[type=email]::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+.Auth form input[type=email]::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+.Auth form input[type=email]:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+.Auth form input[type=email]:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+.Auth form input[type=email]:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+.Auth form input[type=email]:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+.Auth form input[type=email]:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+.Auth form input[type=email]:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+/* Стили для input password */
+.Auth form input[type=password] {
+    margin-top: 15px;
+    width: 80%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 30px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: border 2s ease 0s;
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+.Auth form input[type=password]:focus {
+    border: 1px solid #707070;
+    transition: border 2s ease 0s;
+}
+/* .Auth form input[type=password]:valid {
+    border: 1px solid #02D488;
+    background-image: url(../../accept.svg);
+    transition: border 2s ease 0s;
+    transition: background-image 20s ease 0s;
+} */
+/* .Auth form input[type=password]:invalid {
+    border: 1px solid #F44336;
+    background-image: url(../../wrong.svg);
+    transition: border 2s ease 0s;
+} */
+.Auth form input[type=password]::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+.Auth form input[type=password]::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+.Auth form input[type=password]:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+.Auth form input[type=password]:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+.Auth form input[type=password]:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+.Auth form input[type=password]:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+.Auth form input[type=password]:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+.Auth form input[type=password]:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+/* СТили для кнопки */
+.Auth form input[type=submit]{
+    margin-top: 15px;
+    width: 80%;
+    height: 70px;
+    font-size: 20;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: #4CA5FF;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 5px solid #4292E4;
+    transition: background 300ms ease-in-out;
+    margin-bottom: 30px;
+}
+.Auth form input[type=submit]:hover{
+    background: #4292E4;
+    transition: background 300ms ease-in-out;
+}
