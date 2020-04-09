@@ -4,7 +4,7 @@ import { check, validationResult } from 'express-validator';
 import User from '../../models/User';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import config from '../../config/config'
+import config from '../../config/config';
 
 const router = express.Router();
 
