@@ -1,5 +1,8 @@
 import express from 'express';
-import { check, validationResult } from 'express-validator'
+import mongoose from 'mongoose';
+import { check, validationResult } from 'express-validator';
+import User from '../../models/User';
+import bcrypt from 'bcryptjs';
 
 const router = express.Router();
 
@@ -10,19 +13,39 @@ router.post('/register', [
     check('login', 'Login is Required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
-], (req, res) => {
+], async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    //See if user exists
+    const { login, email, password } = req.body;
 
-    //Encrypt password
+    try {
+        let user = await User.findOne({ email });
+        
+        if (user) {
+            res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+        }
 
-    //Return jsonwebtoken
+        user = new User({
+            login,
+            email,
+            password
+        });
 
-    console.log(req.body);
+        const salt = await bcrypt.genSalt(10);
+
+        user.password = await bcrypt.hash(password, salt);
+
+        await user.save();
+
+        //Return jsonwebtoken
+        res.send('Successfully registered!')
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
 });
 
 export default router;

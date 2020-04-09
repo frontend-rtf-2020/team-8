@@ -28,6 +28,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "bcryptjs": "^2.4.3",
     "concurrently": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "express": "~4.16.1",
@@ -44,7 +45,7 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-env"
+      ["@babel/preset-env", { "targets": { "node": "current" } }]
     ]
   },
   "nodemonConfig": {
