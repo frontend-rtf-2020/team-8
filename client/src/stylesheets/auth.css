@@ -220,7 +220,7 @@
   transition: background 300ms ease-in-out;
 }
 
-@media screen and (max-height: 850px) {
+@media screen and (max-height: 900px) {
   .Auth {
     padding-top: 1.574em;
   }
