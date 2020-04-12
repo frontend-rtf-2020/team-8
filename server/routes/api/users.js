@@ -172,7 +172,7 @@ router.post('/resend', async (req, res) => {
             from: 'dreamteammessenger@gmail.com',
             to: user.email,
             subject: 'Account Verification Token',
-            text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp://' + req.headers.host + '/api/users/confirmation/' + token.token + '.\n'
+            text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp://' + req.headers.host + '/api/users/confirmation/' + token.token + ' (IT SHOULD BE POST method)'
         };
         transporter.sendMail(mailOptions, (err) => {
             if (err) {

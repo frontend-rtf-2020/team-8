@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import auth from './routes/api/auth';
 import users from './routes/api/users';
+import profile from './routes/api/profile';
 import path from 'path'
 
 import connectDB from './config/db';
@@ -20,6 +21,7 @@ app.use(cookieParser());
 //Define Routes
 app.use('/api/users', users);
 app.use('/api/auth', auth);
+app.use('/api/profile', profile);
 
 
 export default app;
