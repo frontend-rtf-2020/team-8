@@ -65,10 +65,11 @@ router.post('/', [
             };
             const transporter = nodemailer.createTransport(smtpConfig);
             var mailOptions = {
-                from: 'dreamteammessenger@gmail.com',
+                from: 'Dream team',
                 to: user.email,
-                subject: 'Account Verification Token',
-                text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp://' + req.headers.host + '/api/users/confirmation/' + token.token + '.\n'
+                subject: 'Подтверждение регистрации',
+                text: 'Привет!,\n' + 
+                    'Для подтверждения регистрации перейдите по ссылке: (тут ссылка)\nТокен: ' + token.token
             };
             transporter.sendMail(mailOptions, (err) => {
                 if (err) {
@@ -129,8 +130,12 @@ router.post('/confirmation', async (req, res) => {
         if (err) {
             return res.status(500).send({ msg: err.message });
         }
-        res.status(200).send("The account has been verified. Please log in.");
     });
+
+    // Delete verification token from db
+    await VerificationToken.findOneAndRemove({ token: req.body.token })
+    
+    res.status(200).send("The account has been verified. Please log in.");
 });
 
 // @route       POST api/users/resend
@@ -144,6 +149,9 @@ router.post('/resend', async (req, res) => {
     if (user.isVerified) {
         return res.status(400).send({ msg: 'This account has already been verified. Please log in.' });
     }
+
+    //Delete old token
+    await VerificationToken.findOneAndRemove({ userId: user.id });
 
     // Verification token
     const token = new VerificationToken({
@@ -169,10 +177,11 @@ router.post('/resend', async (req, res) => {
         };
         const transporter = nodemailer.createTransport(smtpConfig);
         var mailOptions = {
-            from: 'dreamteammessenger@gmail.com',
+            from: 'Dream team',
             to: user.email,
-            subject: 'Account Verification Token',
-            text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp://' + req.headers.host + '/api/users/confirmation/' + token.token + ' (IT SHOULD BE POST method)'
+            subject: 'Повторное подтверждение регистрации',
+            text: 'Привет!,\n' + 
+                    'Для подтверждения регистрации перейдите по ссылке: (тут ссылка)\nТокен: ' + token.token
         };
         transporter.sendMail(mailOptions, (err) => {
             if (err) {
