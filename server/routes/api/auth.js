@@ -9,7 +9,8 @@ import bcrypt from 'bcryptjs';
 const router = express.Router();
 
 // @route       GET api/auth
-// @access      Public
+// @desc        Get user
+// @access      Private
 router.get('/', auth, async (req, res) =>{
     try {
         const user = await User.findById(req.user.id).select('-password');
@@ -20,6 +21,7 @@ router.get('/', auth, async (req, res) =>{
 });
 
 // @route       POST api/auth
+// @desc        Login User
 // @access      Public
 router.post('/', [
     check('email', 'Please include a valid email').isEmail(),
@@ -49,6 +51,12 @@ router.post('/', [
                 .status(400)
                 .json({ errors: [{ msg: 'Invalid Credentials' }] });
         }
+
+        if (!user.isVerified) {
+            return res
+                .status(401)
+                .json({ errors: [{ msg: 'Verify your account' }] }); 
+        } 
 
         const payload = {
             user: {
