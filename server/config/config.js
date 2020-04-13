@@ -7,4 +7,4 @@ const config = {
     SENDGRID_PASSWORD: "TBH-qG9-d7r-zi8"
   }
   
-  export default config
+export default config

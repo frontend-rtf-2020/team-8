@@ -1,8 +1,8 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import auth from './routes/api/auth';
-import users from './routes/api/users';
-import profile from './routes/api/profile';
+import userRoutes from './routes/user.routes'
+import authRoutes from './routes/auth.routes'
+import profileRoutes from './routes/profile.routes'
 import path from 'path'
 
 import connectDB from './config/db';
@@ -19,9 +19,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //Define Routes
-app.use('/api/users', users);
-app.use('/api/auth', auth);
-app.use('/api/profile', profile);
+app.use('/', userRoutes);
+app.use('/', authRoutes);
+app.use('/', profileRoutes);
 
 
 export default app;

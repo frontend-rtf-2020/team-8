@@ -14,7 +14,6 @@
   "description": "Tinkoff-messenger MERN applcation for learn",
   "main": "app.js",
   "scripts": {
-    "intall-all": "npm install && npm install --prefix client",
     "start": "npm run build",
     "build": "npm run transpile && npm run build --prefix client && npm run client",
     "deploy": "concurrently \"node ./server/dist/bin/server\" \"npm run client\"",
