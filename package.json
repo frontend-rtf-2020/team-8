@@ -14,17 +14,17 @@
   "description": "Tinkoff-messenger MERN applcation for learn",
   "main": "app.js",
   "scripts": {
-    "postinstall": "npm install --prefix client ",
+    "postinstall": "cd client && npm install",
     "start": "npm run build",
     "build": "npm run transpile && npm run build --prefix client && npm run client",
-    "deploy": "concurrently \"npm-run-all transpile server\" \"npm run client\"",
+    "deploy": "concurrently \"node ./server/dist/bin/server\" \"npm run client\"",
     "dev": "concurrently \"npm-run-all transpile watch:dev\" \"npm run client\"",
     "server": "npm-run-all clean transpile && node ./server/dist/bin/server",
     "client": "npm start --prefix client",
     "transpile": "babel ./server --out-dir server/dist",
     "clean": "rimraf server/dist",
     "watch:dev": "nodemon"
-  },
+},
   "dependencies": {
     "concurrently": "^5.1.0",
     "cookie-parser": "~1.4.4",
