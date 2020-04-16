@@ -139,8 +139,9 @@ const confirm = async (req, res) => {
 
   // Delete verification token from db
   await VerificationToken.findOneAndRemove({
-    token: token,
+    userId: user.id
   });
+
   res.status(200).send("The account has been verified. Please log in.");
 };
 
@@ -211,16 +212,23 @@ const resend = async (req, res) => {
   });
 };
 
+//Get all the users in the database method
+const list = async (req, res) => {
+  try {
+    const users = await User.find().select("id login email");;
+
+    res.json(users);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+// DONT REALLY NEED THAT
+/*
 //Get a specific user by ID method
 const read = (req, res) => {
   return res.json(req.user)
-};
-
-//Get all the users in the database method
-const list = (req, res) => {
-  res.json({
-    msg: "Get all the users in the database methods"
-  })
 };
 
 //Changed user data for a specific use method
@@ -236,15 +244,13 @@ const remove = (req, res, next) => {
     msg: "Delete a specific user from the database method"
   })
 };
+*/
 
-export default { 
-    create, 
-    userByID, 
-    confirm, 
-    resend,
-    getToken,
-    read, 
-    list, 
-    update, 
-    remove 
+export default {
+  create,
+  userByID,
+  confirm,
+  resend,
+  getToken,
+  list
 };

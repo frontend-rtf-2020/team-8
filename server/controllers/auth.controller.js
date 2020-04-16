@@ -52,13 +52,13 @@ const signin = async (req, res) => {
 };
 
 const signout = (req, res) => {
-    
+
 };
 
-const requireSignin = function(req, res, next) {
+const requireSignin = function (req, res, next) {
     // Get token from header
     const token = req.header('x-auth-token');
-    
+
     // Check if not token
     if (!token) {
         return res.status(401).json({ msg: "No token, authorization denied" });
@@ -66,9 +66,11 @@ const requireSignin = function(req, res, next) {
 
     // Verify token
     try {
-        jwt.verify(token, config.jwtSecret);
+        const decoded = jwt.verify(token, config.jwtSecret);
+
+        req.user = decoded.user;
         next();
-    } catch(err) {
+    } catch (err) {
         res.status(401).json({ msg: "Token is not valid" });
     }
 }
@@ -77,5 +79,4 @@ export default {
     signin,
     signout,
     requireSignin
-  }
-  
+}
