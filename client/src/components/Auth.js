@@ -8,9 +8,9 @@ const Auth = () => (
             <h1>Войдите в аккаунт</h1>
             <h2>Пожалуйста, войдите в свой аккаунт </h2>
             <form>
-                <input type="email" placeholder="Ваш email" required="required" autocomplete="off"></input>
+                <input type="email" placeholder="Ваш email" autoComplete="off" required/>
                 <span className="left">Неверный адрес электронной почты</span>
-                <input type="password" placeholder="Ваш пароль" required="required" autocomplete="off"></input>
+                <input type="password" placeholder="Ваш пароль" autoComplete="off" required/>
                 <span className="left">Неверный пароль</span>
                 <span className="right">Забыли пароль?</span>
                 <input type="submit" value="ВОЙТИ В АККАУНТ"></input>
