@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { setAlert } from '../actions/alert';
+import ProtTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ setAlert }) => {
     const [data, setData] = useState({
         login: '',
         email: '',
@@ -16,7 +19,7 @@ const Register = () => {
         e.preventDefault();
 
         if (password !== passwordConfirmation) {
-            console.log("password do not match");
+            setAlert("Введённые пароли не совпадают", "danger", 3000);
         } else {
             console.log(data);
         }
@@ -60,4 +63,8 @@ const Register = () => {
     );
 };
 
-export default Register;
+Register.propTypes = {
+    setAlert: ProtTypes.func.isRequired
+}
+
+export default connect(null, { setAlert })(Register);
