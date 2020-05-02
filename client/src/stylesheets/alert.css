@@ -1,0 +1,14 @@
+/*DEFAULT STYLES*/
+.alert {
+    position: absolute;
+}
+
+.alert-danger {
+    background: red;
+}
+
+.alert-success {
+    background: green;
+}
+
+/*...*/
