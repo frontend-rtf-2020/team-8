@@ -24,7 +24,7 @@
     "transpile": "babel ./server --out-dir server/dist",
     "clean": "rimraf server/dist",
     "watch:dev": "nodemon"
-},
+  },
   "dependencies": {
     "concurrently": "^5.1.0",
     "cookie-parser": "~1.4.4",
@@ -47,7 +47,11 @@
   },
   "nodemonConfig": {
     "exec": "npm run server",
-    "watch": [ "server/*"],
-    "ignore": [ "dist/*" ]
+    "watch": [
+      "server/*"
+    ],
+    "ignore": [
+      "dist/*"
+    ]
   }
 }
