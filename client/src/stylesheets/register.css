@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
 
-.Auth {
+.Reg {
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: center;
@@ -8,26 +8,26 @@
   width: 100%;
   padding-top: 2em;
 }
-.Auth > div {
+.Reg > div {
   width: 100%;
   max-width: 37.5em;
   padding: 0 1.25em;
 }
-.Auth h1 {
+.Reg h1 {
   color: #212121;
   font-size: 3.125em;
   font-weight: 500;
   text-align: center;
   margin-bottom: 0.625em;
 }
-.Auth h2 {
+.Reg h2 {
   font-size: 1.25em;
   font-weight: 300;
   text-align: center;
   color: #707070;
   margin-bottom: 10%;
 }
-.Auth span.left {
+.Reg span.left {
   height: 1.25em;
   font-weight: 300;
   font-size: 1.25em;
@@ -38,7 +38,7 @@
   align-self: flex-start;
   padding-left: 2.75rem;
 }
-.Auth span.right {
+.Reg span.right {
   height: 1.25em;
   font-weight: 300;
   font-size: 1.25em;
@@ -49,7 +49,7 @@
   align-self: flex-end;
   padding-right: 2.75rem;
 }
-.Auth span.center {
+.Reg span.center {
   height: 1.25em;
   font-weight: 300;
   font-size: 1.25em;
@@ -58,7 +58,7 @@
   margin-top: 0.625em;
   margin-bottom: 0.625em;
 }
-.Auth p {
+.Reg p {
   position: absolute;
   bottom: 3%;
   left: 6%;
@@ -66,7 +66,7 @@
   font-weight: 300;
   color: #707070;
 }
-.Auth form {
+.Reg form {
   width: 100%;
   background: #f9f9f9;
   border-radius: 0.938em;
@@ -77,8 +77,8 @@
   padding-top: 1.875em;
   padding-bottom: 1.875em;
 }
-/* Стили для email */
-.Auth form input[type="email"] {
+/* Стили для Login */
+.Reg form input[name="login"] {
   margin-top: 3.438em;
   width: 80%;
   height: 3.125em;
@@ -91,56 +91,118 @@
   background-repeat: no-repeat;
   background-position: right 1rem center;
 }
-.Auth form input[type="email"]:focus {
+.Reg form input[name="login"]:focus {
   border: 0.063em solid #707070;
   transition: border 2s ease 0s;
 }
-.Auth form input[type="email"]:valid {
+/* .Reg form input[name="login"]:valid {
   border: 0.063em solid #02d488;
   background-image: url(../img/accept.svg);
   transition: border 2s ease 0s;
   transition: background-image 2s ease 0s;
 }
-.Auth form input[type="email"]:focus:invalid {
+.Reg form input[name="login"]:focus:invalid {
+  border: 0.063em solid #f44336;
+  background-image: url(../img/wrong.svg);
+  transition: border 2s ease 0s;
+  transition: background-image 2s ease 0s;
+} */
+.Reg form input[name="login"]::-webkit-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.Reg form input[name="login"]::-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.Reg form input[name="login"]:-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.Reg form input[name="login"]:-ms-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.Reg form input[name="login"]:focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.Reg form input[name="login"]:focus::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.Reg form input[name="login"]:focus:-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.Reg form input[name="login"]:focus:-ms-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+/* Стили для email */
+.Reg form input[type="email"] {
+  margin-top: 0.9em;
+  width: 80%;
+  height: 3.125em;
+  font-size: 1.25em;
+  font-weight: 400;
+  padding-left: 1.875em;
+  border-radius: 0.625em;
+  border: 0.063em solid transparent;
+  transition: border 2s ease 0s;
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+.Reg form input[type="email"]:focus {
+  border: 0.063em solid #707070;
+  transition: border 2s ease 0s;
+}
+.Reg form input[type="email"]:valid {
+  border: 0.063em solid #02d488;
+  background-image: url(../img/accept.svg);
+  transition: border 2s ease 0s;
+  transition: background-image 2s ease 0s;
+}
+.Reg form input[type="email"]:focus:invalid {
   border: 0.063em solid #f44336;
   background-image: url(../img/wrong.svg);
   transition: border 2s ease 0s;
   transition: background-image 2s ease 0s;
 }
-.Auth form input[type="email"]::-webkit-input-placeholder {
+.Reg form input[type="email"]::-webkit-input-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="email"]::-moz-placeholder {
+.Reg form input[type="email"]::-moz-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="email"]:-moz-placeholder {
+.Reg form input[type="email"]:-moz-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="email"]:-ms-input-placeholder {
+.Reg form input[type="email"]:-ms-input-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="email"]:focus::-webkit-input-placeholder {
+.Reg form input[type="email"]:focus::-webkit-input-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="email"]:focus::-moz-placeholder {
+.Reg form input[type="email"]:focus::-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="email"]:focus:-moz-placeholder {
+.Reg form input[type="email"]:focus:-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="email"]:focus:-ms-input-placeholder {
+.Reg form input[type="email"]:focus:-ms-input-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 /* Стили для input password */
-.Auth form input[type="password"] {
+.Reg form input[type="password"] {
   margin-top: 0.938em;
   width: 80%;
   height: 3.125em;
@@ -153,55 +215,55 @@
   background-repeat: no-repeat;
   background-position: right 1rem center;
 }
-.Auth form input[type="password"]:focus {
+.Reg form input[type="password"]:focus {
   border: 0.063em solid #707070;
   transition: border 2s ease 0s;
 }
-/* .Auth form input[type=password]:valid {
+/* .Reg form input[type=password]:valid {
     border: 0.063em solid #02D488;
     background-image: url(../../accept.svg);
     transition: border 2s ease 0s;
     transition: background-image 20s ease 0s;
 } */
-/* .Auth form input[type=password]:invalid {
+/* .Reg form input[type=password]:invalid {
     border: 0.063em solid #F44336;
     background-image: url(../../wrong.svg);
     transition: border 2s ease 0s;
 } */
-.Auth form input[type="password"]::-webkit-input-placeholder {
+.Reg form input[type="password"]::-webkit-input-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="password"]::-moz-placeholder {
+.Reg form input[type="password"]::-moz-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="password"]:-moz-placeholder {
+.Reg form input[type="password"]:-moz-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="password"]:-ms-input-placeholder {
+.Reg form input[type="password"]:-ms-input-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="password"]:focus::-webkit-input-placeholder {
+.Reg form input[type="password"]:focus::-webkit-input-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="password"]:focus::-moz-placeholder {
+.Reg form input[type="password"]:focus::-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="password"]:focus:-moz-placeholder {
+.Reg form input[type="password"]:focus:-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.Auth form input[type="password"]:focus:-ms-input-placeholder {
+.Reg form input[type="password"]:focus:-ms-input-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 /* СТили для кнопки */
-.Auth form input[type="submit"] {
+.Reg form button {
   margin-top: 0.938em;
   width: 80%;
   height: 4.375em;
@@ -214,8 +276,9 @@
   border-bottom: 0.313em solid #4292e4;
   transition: background 300ms ease-in-out;
   margin-bottom: 1.875em;
+  text-transform: uppercase;
 }
-.Auth form input[type="submit"]:hover {
+.Reg form button:hover {
   background: #4292e4;
   transition: background 300ms ease-in-out;
 }
@@ -223,63 +286,71 @@
 /* Адаптация */
 
 @media screen and (max-height: 900px) {
-  .Auth {
+  .Reg {
     padding-top: 1.574em;
   }
-  .Auth > div {
+  .Reg > div {
     width: 100%;
     max-width: 29.527em;
     padding: 0 0.984em;
   }
-  .Auth h1 {
+  .Reg h1 {
     font-size: 2.46em;
     margin-bottom: 0.492em;
   }
-  .Auth h2 {
+  .Reg h2 {
     font-size: 0.98em;
     margin-bottom: 7%;
   }
-  .Auth span.left {
+  .Reg span.left {
     height: 0.98em;
     font-size: 0.98em;
     margin-top: 0.49em;
     margin-bottom: 0.49em;
     padding-left: 2.16rem;
   }
-  .Auth span.right {
+  .Reg span.right {
     height: 0.98em;
     font-size: 0.98em;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     padding-right: 2.1rem;
   }
-  .Auth span.center {
+  .Reg span.center {
     height: 0.98em;
     font-size: 0.98em;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
-  .Auth p {
+  .Reg p {
     bottom: 2.2%;
     left: 4.5%;
     font-size: 0.98em;
   }
-  .Auth form {
+  .Reg form {
     border-radius: 0.7em;
     box-shadow: 0 0.35em 0.7em rgba(40, 37, 58, 0.58);
     padding-top: 1.4em;
     padding-bottom: 1.4em;
   }
-  /* Стили для email */
-  .Auth form input[type="email"] {
+  /* Стили для Login */
+  .Reg form input[name="login"] {
     margin-top: 2.7em;
     height: 2.4em;
     font-size: 0.9em;
     padding-left: 1.4em;
     border-radius: 0.5em;
   }
+  /* Стили для email */
+  .Reg form input[type="email"] {
+    margin-top: 0.7em;
+    height: 2.4em;
+    font-size: 0.9em;
+    padding-left: 1.4em;
+    border-radius: 0.5em;
+  }
   /* Стили для input password */
-  .Auth form input[type="password"] {
+  .Reg form input[type="password"] {
     margin-top: 0.7em;
     height: 2.4em;
     font-size: 0.9em;
@@ -287,7 +358,7 @@
     border-radius: 0.4em;
   }
   /* СТили для кнопки */
-  .Auth form input[type="submit"] {
+  .Reg form button {
     margin-top: 0.7em;
     height: 3.4em;
     font-size: 0.9em;
@@ -298,63 +369,71 @@
 /* Адаптация */
 
 @media screen and (max-height: 590px) {
-  .Auth {
+  .Reg {
     padding-top: 5.5em;
   }
-  .Auth > div {
+  .Reg > div {
     width: 100%;
     max-width: 23.2em;
     padding: 0 0.6em;
   }
-  .Auth h1 {
+  .Reg h1 {
     font-size: 1.9em;
     margin-bottom: 0.5em;
   }
-  .Auth h2 {
+  .Reg h2 {
     font-size: 1em;
     margin-bottom: 6.6%;
   }
-  .Auth span.left {
+  .Reg span.left {
     height: 0.7em;
     font-size: 0.7em;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
     padding-left: 1.7rem;
   }
-  .Auth span.right {
+  .Reg span.right {
     height: 0.3em;
     font-size: 0.7em;
     margin-top: 0.4em;
     margin-bottom: 0.4em;
     padding-right: 1.65rem;
   }
-  .Auth span.center {
+  .Reg span.center {
     height: 0.7em;
     font-size: 0.7em;
     margin-top: 0.4em;
     margin-bottom: 0.4em;
   }
-  .Auth p {
+  .Reg p {
     bottom: 1.7%;
     left: 3.5%;
     font-size: 0.64em;
   }
-  .Auth form {
+  .Reg form {
     border-radius: 0.7em;
     box-shadow: 0 0.35em 0.7em rgba(40, 37, 58, 0.58);
     padding-top: 1.4em;
     padding-bottom: 1.4em;
   }
-  /* Стили для email */
-  .Auth form input[type="email"] {
+  /* Стили для login */
+  .Reg form input[name="login"] {
     margin-top: 2.7em;
     height: 2.4em;
     font-size: 0.7em;
     padding-left: 1.4em;
     border-radius: 0.5em;
   }
+  /* Стили для email */
+  .Reg form input[type="email"] {
+    margin-top: 0.7em;
+    height: 2.4em;
+    font-size: 0.7em;
+    padding-left: 1.4em;
+    border-radius: 0.5em;
+  }
   /* Стили для input password */
-  .Auth form input[type="password"] {
+  .Reg form input[type="password"] {
     margin-top: 0.7em;
     height: 2.4em;
     font-size: 0.7em;
@@ -362,7 +441,7 @@
     border-radius: 0.4em;
   }
   /* СТили для кнопки */
-  .Auth form input[type="submit"] {
+  .Reg form button {
     margin-top: 0.7em;
     height: 3.4em;
     font-size: 0.7em;

@@ -24,7 +24,7 @@
     "transpile": "babel ./server --out-dir server/dist",
     "clean": "rimraf server/dist",
     "watch:dev": "nodemon"
-},
+  },
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
