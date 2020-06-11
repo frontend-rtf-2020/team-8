@@ -18,7 +18,7 @@ const create = async (req, res) => {
       return res.status(400).json({
         errors: [
           {
-            msg: "User already exists",
+            msg: "Пользователь с данным e-mail уже существует",
           },
         ],
       });
