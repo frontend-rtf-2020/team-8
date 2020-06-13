@@ -10,15 +10,23 @@ const create = async (req, res) => {
   const { login, email, password } = req.body;
 
   try {
-    let user = await User.findOne({
-      email,
-    });
-
+    let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
         errors: [
           {
-            msg: "Пользователь с данным e-mail уже существует",
+            msg: "Пользователь с данным e-mail уже существует!",
+          },
+        ],
+      });
+    }
+
+    user = await User.findOne({ login })
+    if (user) {
+      return res.status(400).json({
+        errors: [
+          {
+            msg: "Пользователь с данным логином уже существует!",
           },
         ],
       });
@@ -58,6 +66,9 @@ const create = async (req, res) => {
           user: config.SENDGRID_USERNAME,
           pass: config.SENDGRID_PASSWORD,
         },
+        tls: {
+          rejectUnauthorized: false
+        }
       };
       const transporter = nodemailer.createTransport(smtpConfig);
       var mailOptions = {
@@ -71,12 +82,16 @@ const create = async (req, res) => {
       };
       transporter.sendMail(mailOptions, (err) => {
         if (err) {
-          return res.status(500).send({
-            msg: err.message,
+          return res.status(400).json({
+            errors: [
+              {
+                msg: "По техническим причинам e-mail не был отправлен",
+              },
+            ],
           });
         }
         res.status(200).json({
-          msg: "A verification email has been sent to " + user.email,
+          msg: "На адрес " + user.email + " было отправлено письмо для подтверждения регистрации",
         });
       });
     });
@@ -188,6 +203,9 @@ const resend = async (req, res) => {
         user: config.SENDGRID_USERNAME,
         pass: config.SENDGRID_PASSWORD,
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     };
     const transporter = nodemailer.createTransport(smtpConfig);
     var mailOptions = {

@@ -4,6 +4,7 @@ import Auth from './Auth';
 import Register from './Register';
 import Users from './Users';
 import Alert from './layout/Alert';
+import Thanks from './Thanks';
 // Redux
 import { Provider } from 'react-redux';
 import store from '../store';
@@ -19,6 +20,7 @@ const App = () => (
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Auth} />
         <Route exact path="/users" component={Users} />
+        <Route exact path="/thanks" component={Thanks} />
       </Switch>
     </Router>
   </Provider>

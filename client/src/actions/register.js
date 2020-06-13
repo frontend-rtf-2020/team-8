@@ -12,15 +12,16 @@ export const register = ({ login, email, password }) => async dispatch => {
     const body = JSON.stringify({ login, email, password });
 
     try {
-        await axios.post('/api/users', body, config);
+        const res = await axios.post('/api/users', body, config);
 
         dispatch({
             type: REGISTER_SUCCESS
         });
-    } catch (err) {
-        const errors = err.response.data.errors;
 
-        if (errors) {
+        dispatch(setAlert(res.data.msg, 'success'))
+    } catch (err) {
+        if (err.response) {
+            const errors = err.response.data.errors;
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }
 
