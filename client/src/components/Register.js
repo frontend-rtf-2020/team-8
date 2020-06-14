@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../actions/alert';
 import { register } from '../actions/register';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import ProtTypes from 'prop-types';
 import '../stylesheets/register.css'
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isRegistered }) => {
     const [data, setData] = useState({
         login: '',
         email: '',
@@ -27,6 +27,10 @@ const Register = ({ setAlert, register }) => {
             register({ login, email, password });
         }
     };
+
+    // Redirect
+    if (isRegistered)
+        return <Redirect to="/thanks" />
 
     return (
         <div className="Reg">
@@ -79,7 +83,12 @@ const Register = ({ setAlert, register }) => {
 
 Register.propTypes = {
     setAlert: ProtTypes.func.isRequired,
-    register: ProtTypes.func.isRequired
+    register: ProtTypes.func.isRequired,
+    isRegistered: ProtTypes.bool.isRequired
 }
 
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProps = state => ({
+    isRegistered: state.register.isRegistered
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);

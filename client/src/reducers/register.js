@@ -1,7 +1,7 @@
 import { REGISTER_SUCCESS, REGISTER_FAIL } from '../actions/constants';
 
 const initialState = {
-    isRegistered: null
+    isRegistered: false
 };
 
 export default function(state = initialState, action) {

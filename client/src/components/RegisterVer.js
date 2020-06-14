@@ -1,6 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import '../stylesheets/registerVer.css'
+import React from 'react';
+import '../stylesheets/registerVer.css';
 
 const RegisterVer = () => (
     <div className="RegVer">
@@ -8,7 +7,7 @@ const RegisterVer = () => (
             <h1>Регистрация</h1>
             <h2>Подтверждение аккаунта</h2>
             <form>
-                <img src="../img/nailVer.png" alt="Письмо отправлено на почту"></img>
+                <img src="/mailVer.png" alt="Письмо отправлено на почту"></img>
                 <span className="center">Подтвердите свой аккаунт</span>
                 <span className="center">На вашу почту отправлено письмо с ссылкой на подтверждение аккаунта.</span>
             </form>

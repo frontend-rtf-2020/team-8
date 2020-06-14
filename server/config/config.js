@@ -3,8 +3,19 @@ const config = {
     port: process.env.PORT || 5000,
     jwtSecret: process.env.JWT_SECRET || "YOUR_secret_key",
     mongoUri: 'mongodb+srv://user:QgOVTyn4wOcG8MbV@messenger-2geth.mongodb.net/test?retryWrites=true&w=majority',
-    SENDGRID_USERNAME: "dreamteammessenger@gmail.com",
-    SENDGRID_PASSWORD: "TBH-qG9-d7r-zi8"
+    smtpConfig: {
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // use SSL
+      auth: {
+          user: "dreamteammessenger@gmail.com",
+          pass: "TBH-qG9-d7r-zi8",
+      },
+      tls: {
+          rejectUnauthorized: false
+      }
+    }
+
   }
   
 export default config

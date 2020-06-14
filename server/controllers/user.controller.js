@@ -1,8 +1,8 @@
 import User from "../models/User";
 import crypto from "crypto";
 import VerificationToken from "../models/VerificationToken";
-import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
+import nodemailer from "nodemailer";
 import config from "../config/config";
 
 //Create new user method
@@ -39,9 +39,7 @@ const create = async (req, res) => {
     });
 
     const salt = await bcrypt.genSalt(10);
-
     user.password = await bcrypt.hash(password, salt);
-
     await user.save();
 
     // Verification token
@@ -49,55 +47,41 @@ const create = async (req, res) => {
       userId: user.id,
       token: crypto.randomBytes(16).toString("hex"),
     });
+    await token.save();
 
-    await token.save((err) => {
+    //Send email
+    const transporter = nodemailer.createTransport(config.smtpConfig);
+    const mailOptions = {
+      from: "Dream team",
+      to: email,
+      subject: "Подтверждение регистрации",
+      text:
+        "Привет!\nДля подтверждения регистрации перейди по ссылке: (тут ссылка)\nТокен: " + token.token
+    };
+    transporter.sendMail(mailOptions, (err) => {
       if (err) {
-        return res.status(500).send({
-          msg: err.message,
+        return res.status(400).json({
+          errors: [
+            {
+              msg: "По техническим причинам e-mail не был отправлен",
+            },
+          ],
         });
       }
-
-      // Send the email
-      const smtpConfig = {
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true, // use SSL
-        auth: {
-          user: config.SENDGRID_USERNAME,
-          pass: config.SENDGRID_PASSWORD,
-        },
-        tls: {
-          rejectUnauthorized: false
-        }
-      };
-      const transporter = nodemailer.createTransport(smtpConfig);
-      var mailOptions = {
-        from: "Dream team",
-        to: user.email,
-        subject: "Подтверждение регистрации",
-        text:
-          "Привет!,\n" +
-          "Для подтверждения регистрации перейдите по ссылке: (тут ссылка)\nТокен: " +
-          token.token,
-      };
-      transporter.sendMail(mailOptions, (err) => {
-        if (err) {
-          return res.status(400).json({
-            errors: [
-              {
-                msg: "По техническим причинам e-mail не был отправлен",
-              },
-            ],
-          });
-        }
-        res.status(200).json({
-          msg: "На адрес " + user.email + " было отправлено письмо для подтверждения регистрации",
-        });
+      res.status(200).json({
+        msg: "На адрес " + user.email + " было отправлено письмо для подтверждения регистрации",
       });
     });
+
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+    return res.status(400).json({
+      errors: [
+        {
+          msg: "Регистрация не удалась по техническим причинам... Попробуйте ещё раз"
+        },
+      ],
+    });
   }
 };
 
@@ -187,45 +171,30 @@ const resend = async (req, res) => {
   });
 
   // Save the token
-  await token.save((err) => {
+  await token.save();
+
+  //Send email
+  //Send email
+  const transporter = nodemailer.createTransport(config.smtpConfig);
+  const mailOptions = {
+    from: "Dream team",
+    to: email,
+    subject: "Подтверждение регистрации",
+    text:
+      "Привет!\nДля подтверждения регистрации перейди по ссылке: (тут ссылка)\nТокен: " + token.token
+  };
+  transporter.sendMail(mailOptions, (err) => {
     if (err) {
-      return res.status(500).send({
-        msg: err.message,
+      return res.status(400).json({
+        errors: [
+          {
+            msg: "По техническим причинам e-mail не был отправлен",
+          },
+        ],
       });
     }
-
-    // Send the email
-    const smtpConfig = {
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true, // use SSL
-      auth: {
-        user: config.SENDGRID_USERNAME,
-        pass: config.SENDGRID_PASSWORD,
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-    };
-    const transporter = nodemailer.createTransport(smtpConfig);
-    var mailOptions = {
-      from: "Dream team",
-      to: user.email,
-      subject: "Повторное подтверждение регистрации",
-      text:
-        "Привет!,\n" +
-        "Для подтверждения регистрации перейдите по ссылке: (тут ссылка)\nТокен: " +
-        token.token,
-    };
-    transporter.sendMail(mailOptions, (err) => {
-      if (err) {
-        return res.status(500).send({
-          msg: err.message,
-        });
-      }
-      res.status(200).json({
-        msg: "A verification email has been sent to " + user.email,
-      });
+    res.status(200).json({
+      msg: "На адрес " + user.email + " было отправлено письмо для подтверждения регистрации",
     });
   });
 };

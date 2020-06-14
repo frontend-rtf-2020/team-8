@@ -6,7 +6,6 @@
   justify-content: center;
   flex-grow: 1;
   width: 100%;
-  padding-top: 2em;
 }
 .RegVer > div {
   width: 100%;
@@ -91,6 +90,7 @@
     padding-top: 1.4em;
     padding-bottom: 1.4em;
   }
+}
 /* Адаптация */
 
 @media screen and (max-height: 590px) {
