@@ -149,13 +149,21 @@ const resend = async (req, res) => {
     email: req.body.email,
   });
   if (!user) {
-    return res.status(400).send({
-      msg: "We were unable to find a user with that email.",
+    return res.status(400).json({
+      errors: [
+        {
+          msg: "Пользователь с данным e-mail не найден"
+        }
+      ]
     });
   }
   if (user.isVerified) {
-    return res.status(400).send({
-      msg: "This account has already been verified. Please log in.",
+    return res.status(400).json({
+      errors: [
+        {
+          msg: "Данный аккаунт уже подтверждён!"
+        }
+      ]
     });
   }
 
@@ -174,11 +182,10 @@ const resend = async (req, res) => {
   await token.save();
 
   //Send email
-  //Send email
   const transporter = nodemailer.createTransport(config.smtpConfig);
   const mailOptions = {
     from: "Dream team",
-    to: email,
+    to: user.email,
     subject: "Подтверждение регистрации",
     text:
       "Привет!\nДля подтверждения регистрации перейди по ссылке: (тут ссылка)\nТокен: " + token.token
