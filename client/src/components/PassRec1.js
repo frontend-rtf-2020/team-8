@@ -1,20 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import '../stylesheets/auth.css'
+import '../stylesheets/passrec1.css'
 
-const Auth = () => (
-    <div className="Auth">
+const PassRec1 = () => (
+    <div className="PassRec1">
         <div>
-            <h1>Войдите в аккаунт</h1>
-            <h2>Пожалуйста, войдите в свой аккаунт </h2>
+            <h1>Забыли пароль?</h1>
+            <h2>Пожалуйста, введите почту, на которую зарегистрирован аккаунт</h2>
             <form>
                 <input type="email" placeholder="Ваш email" autoComplete="off" required/>
                 <span className="left">Неверный адрес электронной почты</span>
-                <input type="password" placeholder="Ваш пароль" autoComplete="off" required/>
-                <span className="left">Неверный пароль</span>
-                <input type="submit" value="ВОЙТИ В АККАУНТ"></input>
-                <Link to="/passrec1">
-                    <span className="center">Забыли пароль?</span>
+                <Link to="/passrec2">
+                <input type="submit" value="ВОССТАНОВИТЬ ПАРОЛЬ"></input>
                 </Link>
                 <Link to="/register">
                     <span className="center">Зарегистрироваться</span>
@@ -28,4 +25,4 @@ const Auth = () => (
     </div>
 );
 
-export default Auth;
+export default PassRec1;
