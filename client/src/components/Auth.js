@@ -12,10 +12,10 @@ const Auth = () => (
                 <span className="left">Неверный адрес электронной почты</span>
                 <input type="password" placeholder="Ваш пароль" autoComplete="off" required/>
                 <span className="left">Неверный пароль</span>
-                <input type="submit" value="ВОЙТИ В АККАУНТ"></input>
                 <Link to="/passrec1">
-                    <span className="center">Забыли пароль?</span>
+                    <span className="right">Забыли пароль?</span>
                 </Link>
+                <input type="submit" value="ВОЙТИ В АККАУНТ"></input>
                 <Link to="/register">
                     <span className="center">Зарегистрироваться</span>
                 </Link>

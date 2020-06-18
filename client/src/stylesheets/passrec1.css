@@ -97,15 +97,11 @@
 }
 .PassRec1 form input[type="email"]:valid {
   border: 0.063em solid #02d488;
-  background-image: url(../img/accept.svg);
   transition: border 2s ease 0s;
-  transition: background-image 2s ease 0s;
 }
 .PassRec1 form input[type="email"]:focus:invalid {
   border: 0.063em solid #f44336;
-  background-image: url(../img/wrong.svg);
   transition: border 2s ease 0s;
-  transition: background-image 2s ease 0s;
 }
 .PassRec1 form input[type="email"]::-webkit-input-placeholder {
   opacity: 1;

@@ -13,11 +13,8 @@ const PassRec1 = () => (
                 <Link to="/passrec2">
                 <input type="submit" value="ВОССТАНОВИТЬ ПАРОЛЬ"></input>
                 </Link>
-                <Link to="/register">
-                    <span className="center">Зарегистрироваться</span>
-                </Link>
-                <Link to="/users">
-                    <span className="center">Пользователи</span>
+                <Link to="/login">
+                    <span className="center">Выполнить вход</span>
                 </Link>
             </form>
             <p>Copyright © 2020  Dream team Group RI-370005. All rights reserved.</p>
