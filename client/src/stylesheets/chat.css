@@ -13,7 +13,7 @@
 
 
 /* Левая часть чата */
-.left {
+.chatWrapper .left {
     flex-grow: 0;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
 
 
 /* Голова левой части */
-.header {
+.chatWrapper .header {
     background-color: #FEFEFE;
     display: flex;
     padding: 0.5em 1.25em;
@@ -30,14 +30,14 @@
     justify-content: flex-end;
 }
 /* Меню */
-.menu {
+.chatWrapper .menu {
     background-color: green;
 }
 /* Поиск */
-.searchDiv {
+.chatWrapper .searchDiv {
     padding-left: 1.56em;
 }
-.searchDiv input {
+.chatWrapper .searchDiv input {
   width: 16.3em;
   height: 2.5em;
   padding-left: 0.6em;
@@ -50,18 +50,18 @@
 
 
 /* Диалоги */
-.dialogs {
+.chatWrapper .dialogs {
     flex-grow: 1;
     border-top: 0.063em solid #4CA5FF;
     background-color:#FEFEFE;
 }
 /* Диалог */
-.dialog {
+.chatWrapper .dialog {
     margin: 1.25em;
     height: 3.125em;
     display: flex;
 }
-.avatar {
+.chatWrapper .avatar {
     background: #8DFB4E;
     background: -webkit-linear-gradient(bottom right, #8DFB4E, #A3DBD9);
     background: -moz-linear-gradient(bottom right, #8DFB4E, #A3DBD9);
@@ -73,35 +73,35 @@
 }
 
 /* Информация в чате */
-.infoDialog {
+.chatWrapper .infoDialog {
     width: 70%;
     padding: 0.225em 0.625em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.topInfo {
+.chatWrapper .topInfo {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.bottomInfo {
+.chatWrapper .bottomInfo {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.check {
+.chatWrapper .check {
     width: 0.938em;
     height: 0.938em;
     background-color: #F44336;
     border-radius: 100%;
 }
 /* Шрифты*/
-.name {
+.chatWrapper .name {
     font-weight: 500;
     color: #202020;
 }
-.info {
+.chatWrapper .info {
     font-weight: 300;
     color: #707070;
 }
@@ -109,14 +109,104 @@
 
 
 /* Правая часть чата */
-.right {
+.chatWrapper .right {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    background-color: pink;
-}
-.status {
     background-color:#FEFEFE;
-    padding: 0.5em 1.25em;
-    width: 100%;
+}
+/* Голова правой части */
+.chatWrapper .status {
+    margin: 0 auto;
+    padding: 1.313em 1.25em;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+/* Основная часть чата */
+.chatWrapper .main {
+    border-top: 0.063em solid #4CA5FF;
+}
+/* Окно с сообщениями */
+.chatWrapper .messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 85vh;
+}
+/* Входящие сообщения */
+.chatWrapper .incomingLetterWrapper {
+    display: flex;
+    align-self: flex-start;
+    margin: 1em;
+    width: 40%;
+    height: 5.000em;
+    /* background-color: pink; */
+}
+.chatWrapper .incomingLetterWrapper .inLetter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #4CA5FF;
+    width: 85%;
+    height: 50%;
+    border-radius: 0.625em 0.625em 0.625em 0;
+}
+.chatWrapper .incomingLetterWrapper span {
+    margin-left: 1em;
+    font-weight: 300;
+    color: white;
+}
+/* Исходящие сообщения */
+.chatWrapper .outcomingLetterWrapper {
+    display: flex;
+    align-self: flex-end;
+    margin: 1em;
+    width: 40%;
+    height: 5.000em;
+    /* background-color: pink; */
+}
+.chatWrapper .outcomingLetterWrapper .inLetter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F2F2F2;
+    width: 85%;
+    height: 50%;
+    border-radius: 0.625em 0.625em 0 0.625em;
+}
+.chatWrapper .outcomingLetterWrapper span {
+    margin-left: 1em;
+    font-weight: 300;
+    color: #202020;
+}
+
+/* Отправка сообщений */
+.chatWrapper .message {
+    border-top: 0.063em solid #4CA5FF;
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+.chatWrapper .messageForm {
+    padding: 0.8em;
+    width: 90%;
+}
+.chatWrapper .messageForm input{
+    width: 90%;
+    height: 2.5em;
+    padding-left: 0.6em;
+    border: 0.25em solid #4CA5FF;
+    border-radius: 0.7em 0 0 0.7em;
+    outline: none;
+    background: #FFFFFF;
+    color: #9E9C9C;
+}
+.chatWrapper .messageForm button{
+    height: 2.5em;
+    width: 5%;
+    border: none;
+    background: #4CA5FF;
+    border-radius: 0 0.7em 0.7em 0;
+    cursor: pointer;
 }
