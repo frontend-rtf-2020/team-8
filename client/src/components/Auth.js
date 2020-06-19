@@ -5,7 +5,6 @@ import ProtTypes from 'prop-types';
 import { login } from '../actions/login';
 
 import '../stylesheets/auth.css';
-import isEmptyObject from '../utils/isEmpty';
 
 const Auth = ({ login, isAuthenticated, isWrongData, needVerification }) => {
     const [data, setData] = useState({

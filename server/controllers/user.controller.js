@@ -16,6 +16,10 @@ const read = async (req, res) => {
   }
 };
 
+const getOtherUser = async (req, res) => {
+  res.json(req.otherUser);
+}
+
 //Create new user method
 const create = async (req, res) => {
   const { login, email, password } = req.body;
@@ -99,7 +103,7 @@ const create = async (req, res) => {
 const userByID = async (req, res, next, id) => {
   try {
     const user = await User.findById(id).select("-password");
-    req.user = user
+    req.otherUser = user;
     next();
   } catch (err) {
     res.status(500).send("Server Error");
@@ -259,6 +263,7 @@ const remove = (req, res, next) => {
 
 export default {
   read,
+  getOtherUser,
   create,
   userByID,
   confirm,

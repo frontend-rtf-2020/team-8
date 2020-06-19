@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { LOGIN_SUCCESS, LOGIN_FAIL, USER_LOADED, AUTH_ERROR, LOGOUT } from './constants';
-import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
 
 // Load user
