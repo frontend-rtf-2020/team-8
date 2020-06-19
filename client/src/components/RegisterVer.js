@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import ProtTypes from 'prop-types';
 import { repeatSending } from '../actions/register';
@@ -28,13 +28,13 @@ const RegisterVer = ({ repeatSending, email }) => {
                 <form onSubmit={e => onSubmit(e)}>
                     <img className="mailImage" src={mailImage} alt="Письмо отправлено на почту"/>
                     {email ?
-                        <div>
+                        <Fragment>
                             <span className="center">Подтвердите свой аккаунт</span>
                             <span className="center">На вашу почту {email} отправлено письмо со ссылкой на подтверждение аккаунта.</span>
-                            <button type="submit">Отправить снова</button>
-                        </div>
+                            <button type="submit">Повторить отправку</button>
+                        </Fragment>
                         :
-                        <div>
+                        <Fragment>
                             <span className="center">На указанную почту будет оптравлено письмо со ссылкой на подтверждение аккаунта</span>
                             <input
                                 name="email"
@@ -44,8 +44,8 @@ const RegisterVer = ({ repeatSending, email }) => {
                                 onChange={e => onChange(e)}
                                 required
                             />
-                            <button type="submit">Отправить снова</button>
-                        </div>
+                            <button type="submit">Повторить отправку</button>
+                        </Fragment>
                     }
 
                 </form>

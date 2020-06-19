@@ -23,14 +23,13 @@ const App = () => (
       <Alert/>
       <Switch>
         <Route exact path="/register" component={Register} />
-        <Route exact path="/registerver" component={RegisterVer} />
+        <Route exact path="/thanks" component={RegisterVer} />
         <Route exact path="/registersecondver" component={RegisterSecondVer} />
         <Route exact path="/login" component={Auth} />
         <Route exact path="/users" component={Users} />
         <Route exact path="/chat" component={Chat} />
-        <Route exact path="/passrec1" component={PassRec1} />
+        <Route exact path="/passrecovery" component={PassRec1} />
         <Route exact path="/passrec2" component={PassRec2} />
-
       </Switch>
     </Router>
   </Provider>

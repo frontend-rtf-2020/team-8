@@ -63,6 +63,64 @@
   max-width: 90%;
   max-height: 90%;
 }
+/*Стили для email*/
+.RegVer form input[type="email"] {
+  margin-top: 1em;
+  width: 70%;
+  height: 2.1em;
+  font-size: 1.1em;
+  font-weight: 400;
+  padding-left: 1em;
+  border-radius: 0.625em;
+  border: 0.063em solid transparent;
+  transition: border 2s ease 0s;
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+.RegVer form input[type="email"]:focus {
+  border: 0.063em solid #707070;
+  transition: border 2s ease 0s;
+}
+.RegVer form input[type="email"]:valid {
+  border: 0.063em solid #02d488;
+  transition: border 2s ease 0s;
+}
+.RegVer form input[type="email"]:focus:invalid {
+  border: 0.063em solid #f44336;
+  transition: border 2s ease 0s;
+}
+.RegVer form input[type="email"]::-webkit-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.RegVer form input[type="email"]::-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.RegVer form input[type="email"]:-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.RegVer form input[type="email"]:-ms-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.RegVer form input[type="email"]:focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.RegVer form input[type="email"]:focus::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.RegVer form input[type="email"]:focus:-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.RegVer form input[type="email"]:focus:-ms-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
 /* СТили для кнопки */
 .RegVer form button {
