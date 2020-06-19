@@ -1,0 +1,39 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
+
+.wrapper {
+    font-family: "Roboto", sans-serif;
+    margin: 0.05em 0.05em auto auto;
+    width: 85%;
+    display: grid;
+    grid-template-columns: [left] 1fr [right] 2fr;
+}
+.left {
+    grid-column: left;
+    display: grid;
+    grid-template-rows: [header] 1fr [dialogs] 2fr;
+}
+.header {
+    display: grid;
+    grid-template-columns: [menu] 1fr [search] 2fr;
+}
+.menu {
+    background-color: yellow;
+}
+.search {
+    background-color: red;
+}
+.dialogs {
+
+    background-color: blue;
+}
+.right {
+    display: grid;
+    grid-template-rows: [user] 1fr [chat] 2fr;
+}
+.user {
+    grid-row: user;
+}
+.chat {
+    grid-row: chat;
+    background-color: green;
+}

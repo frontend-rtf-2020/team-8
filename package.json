@@ -9,7 +9,7 @@
     "Express",
     "NodeJS"
   ],
-  "author": "Popov Alexander, Popov Daniil, Volozhanin Stanislav, Baygulov Dmitri, Golenzev Yakov",
+  "author": "Popov Alexander, Popov Daniil, Volozhanin Stanislav, Baygulov Dmitri, Golencev Yakov",
   "license": "MIT",
   "description": "Tinkoff-messenger MERN applcation for learn",
   "main": "app.js",

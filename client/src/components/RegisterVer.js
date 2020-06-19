@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ProtTypes from 'prop-types';
 import { repeatSending } from '../actions/register';
 import '../stylesheets/registerVer.css';
+import mailImage from '../img/mail.svg';
 
 const RegisterVer = ({ repeatSending, email }) => {
     const [ userEmail, setEmail ] = useState('');
@@ -25,7 +26,7 @@ const RegisterVer = ({ repeatSending, email }) => {
                 <h1>Регистрация</h1>
                 <h2>Подтверждение аккаунта</h2>
                 <form onSubmit={e => onSubmit(e)}>
-                    <img src="/mailVer.png" alt="Письмо отправлено на почту"></img>
+                    <img className="mailImage" src={mailImage} alt="Письмо отправлено на почту"/>
                     {email ?
                         <div>
                             <span className="center">Подтвердите свой аккаунт</span>
