@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../actions/alert';
-import { Link } from 'react-router-dom';
+import { register } from '../actions/register';
+import { Link, Redirect } from 'react-router-dom';
 import ProtTypes from 'prop-types';
 import '../stylesheets/register.css'
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register, isRegistered }) => {
     const [data, setData] = useState({
         login: '',
         email: '',
@@ -23,9 +24,13 @@ const Register = ({ setAlert }) => {
         if (password !== passwordConfirmation) {
             setAlert("Введённые пароли не совпадают", "danger", 3000);
         } else {
-            console.log(data);
+            register({ login, email, password });
         }
     };
+
+    // Redirect
+    if (isRegistered)
+        return <Redirect to="/thanks" />
 
     return (
         <div className="Reg">
@@ -77,7 +82,13 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-    setAlert: ProtTypes.func.isRequired
+    setAlert: ProtTypes.func.isRequired,
+    register: ProtTypes.func.isRequired,
+    isRegistered: ProtTypes.bool.isRequired
 }
 
-export default connect(null, { setAlert })(Register);
+const mapStateToProps = state => ({
+    isRegistered: state.register.isRegistered
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);

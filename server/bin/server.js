@@ -1,7 +1,6 @@
 import app from '../app';
 import config from '../config/config'
 
-
 app.listen(config.port, (err) => {
   if (err) {
     console.log(err)
