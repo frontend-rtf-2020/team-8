@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOGIN_SUCCESS, LOGIN_FAIL, USER_LOADED, AUTH_ERROR } from './constants';
+import { LOGIN_SUCCESS, LOGIN_FAIL, USER_LOADED, AUTH_ERROR, LOGOUT } from './constants';
 import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -57,4 +57,9 @@ export const login = (email, password) => async dispatch => {
             }
         });
     }
+}
+
+// Log out
+export const logout = () => dispatch => {
+    dispatch({ type: LOGOUT });
 }

@@ -62,6 +62,7 @@
     display: block;
 }
 .dropdown-content a:hover {
+    cursor: pointer;
     background-color: rgb(248, 247, 247);
 }
 .menu:hover .dropdown-content {
