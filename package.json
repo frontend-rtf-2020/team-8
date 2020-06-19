@@ -23,6 +23,7 @@
     "client": "npm start --prefix client",
     "transpile": "babel ./server --out-dir server/dist",
     "clean": "rimraf server/dist",
+    "heroky-postbuild": "cd client && npm install && npm run build",
     "watch:dev": "nodemon"
   },
   "dependencies": {
