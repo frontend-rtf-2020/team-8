@@ -1,11 +1,13 @@
 import React, { Fragment, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProtTypes from 'prop-types';
 import { repeatSending } from '../actions/register';
+
 import '../stylesheets/registerVer.css';
 import mailImage from '../img/mail.svg';
 
-const RegisterVer = ({ repeatSending, email }) => {
+const RegisterVer = ({ repeatSending, email, isAuthenticated }) => {
     const [ userEmail, setEmail ] = useState('');
 
     const onChange = e => setEmail(e.target.value);
@@ -19,6 +21,10 @@ const RegisterVer = ({ repeatSending, email }) => {
             repeatSending(userEmail);
         }
     }
+
+    // Redirect 
+    if (isAuthenticated)
+        return <Redirect to="/chat"/>
 
     return (
         <div className="RegVer">
@@ -60,7 +66,8 @@ RegisterVer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    email: state.register.email
+    email: state.register.email,
+    isAuthenticated: state.login.isAuthenticated
 });
 
 export default connect(mapStateToProps, { repeatSending })(RegisterVer);
