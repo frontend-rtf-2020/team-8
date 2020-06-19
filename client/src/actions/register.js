@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REGISTER_SUCCESS, REGISTER_FAIL } from './constants';
+import { REGISTER_SUCCESS, REGISTER_FAIL, VERIFICATION_SUCCESS, VERIFICATION_FAIL } from './constants';
 import { setAlert } from './alert';
 
 export const register = ({ login, email, password }) => async dispatch => {
@@ -47,3 +47,16 @@ export const repeatSending = (email) => async dispatch => {
         dispatch({ type: REGISTER_FAIL });
     }
 };
+
+export const verifyAccount = (token) => async dispatch => {
+    try {
+        await axios.post('/api/confirmation/'+ token);
+
+        dispatch({ type: VERIFICATION_SUCCESS });
+    } catch (err) {
+        if (err.response) {
+            const errors = err.response.data.errors;
+            dispatch({ type: VERIFICATION_FAIL, payload: { errors } });
+        }
+    }
+}

@@ -24,7 +24,7 @@ const App = () => (
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/thanks" component={RegisterVer} />
-        <Route exact path="/registersecondver" component={RegisterSecondVer} />
+        <Route exact path="/confirmation/:token" component={RegisterSecondVer} />
         <Route exact path="/login" component={Auth} />
         <Route exact path="/users" component={Users} />
         <Route exact path="/chat" component={Chat} />

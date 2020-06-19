@@ -56,7 +56,7 @@ const create = async (req, res) => {
       to: email,
       subject: "Подтверждение регистрации",
       text:
-        "Привет!\nДля подтверждения регистрации перейди по ссылке: (тут ссылка)\nТокен: " + token.token
+        "Привет!\nДля подтверждения регистрации перейди по ссылке: http://localhost:3000/confirmation/" + token.token
     };
     transporter.sendMail(mailOptions, (err) => {
       if (err) {
@@ -98,10 +98,13 @@ const userByID = async (req, res, next, id) => {
 const getToken = async (req, res, next, token) => {
   VerificationToken.findOne({ token: token }).exec((err, token) => {
     if (err || !token) return res.status(400).json({
-      error: "We were unable to find a valid token. Your token may have expired."
-    })
-    req.token = token
-    console.log(req.token)
+      errors: [
+        {
+          msg: "Ваше письмо устарело, либо аккаунт уже подтверждён..."
+        }
+      ]
+    });
+    req.token = token;
     next()
   })
 };
@@ -116,13 +119,21 @@ const confirm = async (req, res) => {
   });
 
   if (!user) {
-    return res.status(400).send({
-      msg: "We were unable to find a user for this token.",
+    return res.status(400).json({
+      errors: [
+        {
+          msg: "Пользователь не был найден, попробуйте зарегистрироваться снова",
+        }
+      ]
     });
   }
   if (user.isVerified) {
-    return res.json({
-      msg: "This user has already been verified.",
+    return res.status(400).json({
+      errors: [
+        {
+          msg: "Аккаунт пользователя уже подтверждён!",
+        }
+      ]
     });
   }
 
@@ -141,7 +152,7 @@ const confirm = async (req, res) => {
     userId: user.id
   });
 
-  res.status(200).send("The account has been verified. Please log in.");
+  res.status(200).send("Аккаунт подтверждён. Пожалуйста войдите");
 };
 
 const resend = async (req, res) => {
@@ -188,7 +199,7 @@ const resend = async (req, res) => {
     to: user.email,
     subject: "Подтверждение регистрации",
     text:
-      "Привет!\nДля подтверждения регистрации перейди по ссылке: (тут ссылка)\nТокен: " + token.token
+    "Привет!\nДля подтверждения регистрации перейди по ссылке: http://localhost:3000/confirmation/" + token.token
   };
   transporter.sendMail(mailOptions, (err) => {
     if (err) {

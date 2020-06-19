@@ -12,15 +12,9 @@ const Auth = () => (
                 <span className="left">Неверный адрес электронной почты</span>
                 <input type="password" placeholder="Ваш пароль" autoComplete="off" required/>
                 <span className="left">Неверный пароль</span>
-                <Link to="/passrecovery">
-                    <span className="right">Забыли пароль?</span>
-                </Link>
                 <input type="submit" value="ВОЙТИ В АККАУНТ"></input>
                 <Link to="/register">
                     <span className="center">Зарегистрироваться</span>
-                </Link>
-                <Link to="/users">
-                    <span className="center">Пользователи</span>
                 </Link>
             </form>
             <p>Copyright © 2020  Dream team Group RI-370005. All rights reserved.</p>
