@@ -3,29 +3,45 @@ import { Link } from 'react-router-dom';
 import '../stylesheets/chat.css'
 
 const Chat = () => (
-    <div className="wrapper">
+    <div className="chatWrapper">
         <div className="left">
             <div className="header">
                 <div className="menu">
-                    Бургер меню
+                    menu
                 </div>
-                <div className="search">
-                    <span>Строка поиска</span>
+                <div className="searchDiv">
+                    <form action="" method="get">
+                        <input name="search" placeholder="Search..." type="search"/>
+                    </form>
                 </div>
             </div>
-            <div className="right">
-                <div className="user">
-                    тут ФИО
-                </div>
-                <div className="dialogs">
-                    <span>Здесь все дилоги</span>
+            <div className="dialogs">
+                <div className="dialog">
+                    <div className="avatar">
+                    </div>
+                    <div className="infoDialog">
+                        <div className="topInfo">
+                            <span className="name">Daniil Popov</span>
+                            <span className="info">today</span>
+                        </div>
+                        <div className="bottomInfo">
+                            <span className="info">Все нормально)</span>
+                            <div className="check"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div className="chat">
-            <span>Тут будет чат</span>
+        <div className="right">
+            <div className="status">
+                <div>name</div>
+                <div>status</div>
+            </div>
+            <div className="">
+                Низ
+                </div>
         </div>
-        <p>Copyright © 2020  Dream team Group RI-370005. All rights reserved.</p>
+        {/* <p>Copyright © 2020  Dream team Group RI-370005. All rights reserved.</p> */}
     </div>
 );
 
