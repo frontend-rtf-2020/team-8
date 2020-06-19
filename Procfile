@@ -1,1 +1,1 @@
-web: node server/dist/bin/server.js
+web: npm start
