@@ -5,6 +5,17 @@ import bcrypt from "bcryptjs";
 import nodemailer from "nodemailer";
 import config from "../config/config";
 
+//Get a specific user by ID method
+const read = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server error");
+  }
+};
+
 //Create new user method
 const create = async (req, res) => {
   const { login, email, password } = req.body;
@@ -220,7 +231,7 @@ const resend = async (req, res) => {
 //Get all the users in the database method
 const list = async (req, res) => {
   try {
-    const users = await User.find().select("id login email");;
+    const users = await User.find().select("id login email");
 
     res.json(users);
   } catch (err) {
@@ -229,13 +240,8 @@ const list = async (req, res) => {
   }
 };
 
-// DONT REALLY NEED THAT
-/*
-//Get a specific user by ID method
-const read = (req, res) => {
-  return res.json(req.user)
-};
 
+/*
 //Changed user data for a specific use method
 const update = (req, res, next) => {
   res.json({
@@ -252,6 +258,7 @@ const remove = (req, res, next) => {
 */
 
 export default {
+  read,
   create,
   userByID,
   confirm,

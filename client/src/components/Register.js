@@ -6,7 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ProtTypes from 'prop-types';
 import '../stylesheets/register.css'
 
-const Register = ({ setAlert, register, isRegistered }) => {
+const Register = ({ setAlert, register, isRegistered, isAuthenticated }) => {
     const [data, setData] = useState({
         login: '',
         email: '',
@@ -29,6 +29,9 @@ const Register = ({ setAlert, register, isRegistered }) => {
     };
 
     // Redirect
+    if (isAuthenticated) 
+        return <Redirect to="/chat"/>
+
     if (isRegistered)
         return <Redirect to="/thanks" />
 
@@ -88,7 +91,8 @@ Register.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    isRegistered: state.register.isRegistered
+    isRegistered: state.register.isRegistered,
+    isAuthenticated: state.login.isAuthenticated
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Register);

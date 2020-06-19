@@ -4,6 +4,9 @@ import authCtrl from '../controllers/auth.controller'
 
 const router = express.Router()
 
+router.route('/api/me') 
+  .get(authCtrl.requireSignin, userCtrl.read); //получить данные пользователя
+
 router.route('/api/users')
   .get(userCtrl.list) //список пользователей
   .post(userCtrl.create) //создать нового пользователя

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { REGISTER_SUCCESS, REGISTER_FAIL, VERIFICATION_SUCCESS, VERIFICATION_FAIL } from './constants';
 import { setAlert } from './alert';
 
+// Register user
 export const register = ({ login, email, password }) => async dispatch => {
     const config = {
         headers: {
@@ -25,6 +26,7 @@ export const register = ({ login, email, password }) => async dispatch => {
     }
 }
 
+// Send verification email again
 export const repeatSending = (email) => async dispatch => {
     const config = {
         headers: {
@@ -48,6 +50,7 @@ export const repeatSending = (email) => async dispatch => {
     }
 };
 
+// verify user account
 export const verifyAccount = (token) => async dispatch => {
     try {
         await axios.post('/api/confirmation/'+ token);

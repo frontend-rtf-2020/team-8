@@ -12,7 +12,7 @@ const signin = async (req, res) => {
         if (!user) {
             return res
                 .status(400)
-                .json({ errors: [{ msg: 'Invalid Credentials' }] });
+                .json({ errors: [{ msg: 'Неверный логин или пароль' }] });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
@@ -20,13 +20,13 @@ const signin = async (req, res) => {
         if (!isMatch) {
             return res
                 .status(400)
-                .json({ errors: [{ msg: 'Invalid Credentials' }] });
+                .json({ errors: [{ msg: 'Неверный логин или пароль' }] });
         }
 
         if (!user.isVerified) {
             return res
                 .status(401)
-                .json({ errors: [{ msg: 'Verify your account' }] });
+                .json({ errors: [{ needVerification: true, msg: 'Необходимо подтвердить аккаунт' }] });
         }
 
         const payload = {
