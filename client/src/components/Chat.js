@@ -4,10 +4,38 @@ import '../stylesheets/chat.css'
 
 const Chat = () => (
     <div className="chatWrapper">
+        <div id="profile" class="profile">
+            <div class="profileWrapper">
+                <div class="profileInner">
+                    <div class="profileHeader">
+                        <h3 class="profileTitle">Мой профиль</h3>
+                        <a href="#close" title="Закрыть" class="close">×</a>
+                     </div>
+                    <div class="profileText">
+                        <h3 class="profileTitle">user.name</h3>        
+                        <p>Name</p>
+                        <h3 class="profileTitle">user.surname</h3>        
+                        <p>Surame</p>
+                        <h3 class="profileTitle">user.username</h3>        
+                        <p>Userame</p>
+                        <h3 class="profileTitle">user.status</h3>        
+                        <p>Status</p>
+                    </div>
+                </div>    
+            </div>
+        </div>	
         <div className="left">
             <div className="header">
-                <div className="menu">
-                    menu
+                    <div class="menu">   
+                    <div className="menuButton">
+                        <div className="lines"></div>
+                        <div className="lines"></div>
+                        <div className="lines"></div>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="#profile">Мой профиль</a>
+                        <a href="#">Выход</a>
+                    </div>
                 </div>
                 <div className="searchDiv">
                     <form action="" method="get">

@@ -30,9 +30,109 @@
     justify-content: flex-end;
 }
 /* Меню */
-.chatWrapper .menu {
-    background-color: green;
+.menu {
+    position: relative;
+    display: inline-block;
 }
+.menuButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 42px;
+    width: 42px;
+}
+.lines {
+    background-color: #4ca5ff;
+    height: 5px;
+    width: 100%;
+    border-radius: 35px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fefefe;
+    min-width: 190px;
+    box-shadow: 3px 6px 12px 0px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: #797676;
+    padding: 0.625em 0.875em;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: rgb(248, 247, 247);
+}
+.menu:hover .dropdown-content {
+    display: block;
+}
+.profile {
+    opacity: 0;
+    background: rgba(0,0,0,0.7); 
+    pointer-events: none; 
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    transition: all 0.5s ease;
+    margin: 0;
+    padding: 0;
+}
+.profile:target {
+    opacity: 1; 
+    pointer-events: auto;
+    overflow-y: auto;
+}
+.profileWrapper {
+    margin:auto; 
+    margin-top:25vh;
+}
+.profileInner {
+    position: relative;
+    background: #F7F8F9; 
+    border-radius: 10px;  
+    border: 0.25em solid #4CA5FF
+}
+.profileHeader {
+    padding: 15px; 
+    background:#F7F8F9; 
+    position:relative;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 0.25em solid #4CA5FF;
+}
+.profileTitle {
+    font-size: 18px; 
+    color:#000000; 
+    font-weight:bold;  
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.close {
+    position:absolute;
+    top:15px; 
+    right:10px; 
+    font-size: 24px;
+    color: #555; 
+    text-decoration: none;
+}
+.close:hover, .close:focus {
+    color: #000;  
+    cursor: pointer;
+}
+.profileText {
+    padding: 15px 20px; 
+    font-size: 12px;
+    color: #797676;
+}
+@media (min-width: 550px) {
+    .profileWrapper {
+    max-width: 300px;
+    }
+}
+
 /* Поиск */
 .chatWrapper .searchDiv {
     padding-left: 1.56em;
