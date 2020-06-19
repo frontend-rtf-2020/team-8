@@ -30,6 +30,7 @@ const App = () => (
         <Route exact path="/chat" component={Chat} />
         <Route exact path="/passrec1" component={PassRec1} />
         <Route exact path="/passrec2" component={PassRec2} />
+
       </Switch>
     </Router>
   </Provider>
