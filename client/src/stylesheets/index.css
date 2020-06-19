@@ -10,6 +10,9 @@ body {
   background: -webkit-linear-gradient(bottom right, #FFFBB1, #B0EAFF);
   background: -moz-linear-gradient(bottom right, #FFFBB1, #B0EAFF);
   background: linear-gradient(to top left, #FFFBB1, #B0EAFF);
+  overflow-y:hidden;  /*для вертикального*/
+  overflow-x:hidden;  /*для горизонтального*/
+  
 }
 
 code {
@@ -22,3 +25,6 @@ code {
   padding: 0 0.625em;
   width: 100%;
 }
+/* p {
+transform: rotate(270deg);
+} */
