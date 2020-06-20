@@ -14,8 +14,7 @@
   "description": "Tinkoff-messenger MERN applcation for learn",
   "main": "app.js",
   "scripts": {
-    "install": "npm install",
-    "postinstall": "&& cd client && npm install",
+    "postinstall": "cd client && npm install",
     "start": "npm run build",
     "build": "npm run transpile && npm run build --prefix client && npm run client",
     "deploy": "concurrently \"node ./server/dist/bin/server\" \"npm run client\"",
@@ -25,7 +24,7 @@
     "transpile": "babel ./server --out-dir server/dist",
     "clean": "rimraf server/dist",
     "watch:dev": "nodemon"
-    
+
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
