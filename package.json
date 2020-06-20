@@ -14,7 +14,8 @@
   "description": "Tinkoff-messenger MERN applcation for learn",
   "main": "app.js",
   "scripts": {
-    "postinstall": "npm install && cd client && npm install",
+    "install": "npm install",
+    "postinstall": "&& cd client && npm install",
     "start": "npm run build",
     "build": "npm run transpile && npm run build --prefix client && npm run client",
     "deploy": "concurrently \"node ./server/dist/bin/server\" \"npm run client\"",
