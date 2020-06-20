@@ -72,30 +72,28 @@ const addMessage = async (req, res) => {
 
 }
 
-const getAllMessages = async (req, res) => {
-    const { chatId } = req.body;
-
+const messagesByRoomId = async (req, res, next, id) => {
     try {
-        const messages = await Message.find({
-            chatRoomId: chatId
-        });
-
-        res.json(messages);
+      const messages = await Message.find({
+          chatRoomId: id
+      });
+      req.messages = messages;
+      next();
     } catch (err) {
-        console.error(err.message);
-        return res.status(400).json({
-            errors: [
-                {
-                    msg: "Внутренняя ошибка"
-                },
-            ],
-        });
+      res.status(500).send("Server Error");
     }
-}
+  };
+
+const getAllMessages = async (req, res) => {
+    res.json(req.messages);
+};
+
+
 
 export default {
     createRoom,
     getAllRooms,
     addMessage,
+    messagesByRoomId,
     getAllMessages
 }

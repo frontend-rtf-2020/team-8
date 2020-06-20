@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getAllMessages } from '../../actions/chat';
 import axios from 'axios';
+import { set } from 'mongoose';
 
 const getData = users => {
     return users.map(userId => (
@@ -8,25 +12,24 @@ const getData = users => {
     ));
 }
 
-const Dialog = ({ users, myId }) => {
-    const [login, setLogin] = useState('');
+const Dialog = ({ getAllMessages, users, roomId, userData }) => {
+    const [logins, setLogins] = useState([]);
 
     useEffect(() => {
         getData(users).forEach(promise => {
             promise.then(user => {
-                if (user._id !== myId) {
-                    setLogin(user.login);
-                }
-            });
-        });;
-    }, [])
+                console.log(user.login, userData.login)
+                setLogins([...logins, user.login]);
+            })
+        })
+    }, []);
 
     return (
-        <div className="dialog">
+        <div className="dialog" onClick={e => getAllMessages(roomId)}>
             <div className="avatar" />
             <div className="infoDialog">
                 <div className="topInfo">
-                    <span className="name">{login}</span>
+                    <span className="name">user</span>
                     <span className="info">...</span>
                 </div>
                 <div className="bottomInfo">
@@ -36,6 +39,14 @@ const Dialog = ({ users, myId }) => {
             </div>
         </div>
     );
-}
+};
 
-export default Dialog;
+Dialog.propTypes = {
+    getAllMessages: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+    userData: state.login.userData
+});
+
+export default connect(mapStateToProps, { getAllMessages })(Dialog);

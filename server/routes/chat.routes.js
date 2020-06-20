@@ -10,7 +10,12 @@ router.route('/chat')
     .post(authCtrl.requireSignin, chatCtrl.createRoom) // создание комнаты
 
 router.route('/chat/messages')
-    .get(authCtrl.requireSignin, chatCtrl.getAllMessages) // запрос на все сообщения
     .post(authCtrl.requireSignin, chatCtrl.addMessage) // добавить сообщение в чат
+
+router.route('/chat/messages/:roomId')
+    .get(authCtrl.requireSignin, chatCtrl.getAllMessages) // запрос на все сообщения комнаты
+
+
+router.param('roomId', chatCtrl.messagesByRoomId);
 
 export default router;

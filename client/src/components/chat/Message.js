@@ -1,12 +1,15 @@
 import React from 'react';
 
-const Message = () => (
-    <div className="message">
-        <form className="messageForm">
-            <input name="writeMessage" placeholder="White a message..." type="text" />
-            <button type="submit"></button>
-        </form>
-    </div>
-);
+const Message = ({ type, content }) => {
+    return (
+        <div className={type}>
+            <div className="avatar" />
+            <div className="inLetter">
+                <span>{content}</span>
+            </div>
+            {/* <span className="info">Вчера, в 14:48</span> */}
+        </div>
+    );
+}
 
 export default Message;

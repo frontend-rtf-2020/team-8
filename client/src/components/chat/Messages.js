@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import socketIOClient from 'socket.io-client';
+import Message from './Message';
 
-const Messages = () => {
+const Messages = ({ messages, userData: {_id} }) => {
     const [data, setData] = useState('');
 
     /* 
@@ -14,21 +17,26 @@ const Messages = () => {
 
     return (
         <div className="messages">
-            <div className="incomingLetterWrapper">
-                <div className="avatar" />
-                <div className="inLetter">
-                    <span>Apple - это лучшее что придумал человек!</span>
-                </div>
-                {/* <span className="info">Вчера, в 14:48</span> */}
-            </div>
-            <div className="outcomingLetterWrapper">
-                <div className="inLetter">
-                    <span>На самом то деле, Сяоми топ за свои деньги!</span>
-                </div>
-                <div className="avatar" />
-            </div>
+            {
+                messages.map((message, index) => 
+                    <Message
+                        key={index}
+                        type={message.sender === _id ? "outcomingLetterWrapper" : "incomingLetterWrapper"}
+                        content={message.content} 
+                    />
+                    )
+            }
         </div>
     );
 }
 
-export default Messages;
+Messages.propTypes = {
+    messages: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => ({
+    messages: state.chat.messages,
+    userData: state.login.userData
+});
+
+export default connect(mapStateToProps)(Messages);

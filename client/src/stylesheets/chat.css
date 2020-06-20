@@ -176,7 +176,6 @@
     height: 2.813em;
     width: 2.813em;
     border-radius: 100%;
-    margin: 0.125em;
 }
 
 /* Информация в чате */
@@ -243,15 +242,14 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-
+    padding: 1em;
 }
 /* Входящие сообщения */
 .chatWrapper .incomingLetterWrapper {
     display: flex;
     align-self: flex-start;
-    margin: 1em;
-    width: 40%;
-    height: 5.000em;
+    width: 80%;
+    margin: 1em 0 0;
     /* background-color: pink; */
 }
 .chatWrapper .incomingLetterWrapper .inLetter {
@@ -259,22 +257,23 @@
     flex-direction: column;
     justify-content: center;
     background-color: #4CA5FF;
-    width: 85%;
+    max-width: 85%;
+    margin-left: .5em;
     height: 50%;
+    padding: .5em 1em;
     border-radius: 0.625em 0.625em 0.625em 0;
 }
 .chatWrapper .incomingLetterWrapper span {
-    margin-left: 1em;
     font-weight: 300;
     color: white;
 }
 /* Исходящие сообщения */
 .chatWrapper .outcomingLetterWrapper {
     display: flex;
+    flex-direction: row-reverse;
     align-self: flex-end;
-    margin: 1em;
-    width: 40%;
-    height: 5.000em;
+    margin: 1em 0 0;
+    width: 80%;
     /* background-color: pink; */
 }
 .chatWrapper .outcomingLetterWrapper .inLetter {
@@ -282,7 +281,9 @@
     flex-direction: column;
     justify-content: center;
     background-color: #F2F2F2;
-    width: 85%;
+    margin-right: .5em;
+    padding: .5em 1em;
+    max-width: 85%;
     height: 50%;
     border-radius: 0.625em 0.625em 0 0.625em;
 }

@@ -10,4 +10,4 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const GET_CHAT_ROOMS = 'GET_CHAT_ROOMS';
-export const ROOMS_HAVE_UPDATED = 'ROOMS_HAVE_UPDATED';
+export const GET_MESSAGES = 'GET_MESSAGES';
