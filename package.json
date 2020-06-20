@@ -16,7 +16,7 @@
   "scripts": {
     "postinstall": "cd client && npm install",
     "start": "npm run build",
-    "build": "npm run transpile && npm run build --prefix client && npm run client",
+    "build": "npm run transpile && npm run build --prefix client && npm run client && npm run server",
     "deploy": "concurrently \"node ./server/dist/bin/server\" \"npm run client\"",
     "dev": "concurrently \"npm-run-all transpile watch:dev\" \"npm run client\"",
     "server": "npm-run-all clean transpile && node ./server/dist/bin/server",
