@@ -57,9 +57,7 @@ const signout = (req, res) => {
 
 const requireSignin = function (req, res, next) {
     // Get token from header
-    const token = req.header('x-auth-token');
-
-    console.log(token);
+    token = req.header('x-auth-token');
 
     // Check if not token
     if (!token) {
