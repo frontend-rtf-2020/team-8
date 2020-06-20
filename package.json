@@ -15,16 +15,14 @@
   "main": "app.js",
   "scripts": {
     "postinstall": "cd client && npm install",
-    "start": "npm run build",
-    "build": "npm run transpile && npm run build --prefix client && npm run client",
-    "deploy": "concurrently \"node ./server/dist/bin/server\" \"npm run client\"",
+    "build": "npm run transpile && npm run build --prefix client",
     "dev": "concurrently \"npm-run-all transpile watch:dev\" \"npm run client\"",
     "server": "npm-run-all clean transpile && node ./server/dist/bin/server",
     "client": "npm start --prefix client",
     "transpile": "babel ./server --out-dir server/dist",
     "clean": "rimraf server/dist",
-    "watch:dev": "nodemon"
-
+    "watch:dev": "nodemon",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client && npm run transpile"
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
