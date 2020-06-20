@@ -2,7 +2,7 @@ import app from '../app';
 import socketIo from 'socket.io';
 import config from '../config/config'
 
-const expressServer = app.listen(config.port, (err) => {
+const expressServer = app.listen(config.port, '0.0.0.0', (err) => {
   if (err) {
     console.log(err)
   }
