@@ -1,7 +1,6 @@
 import ChatRoom from '../models/ChatRoom';
 import Message from '../models/Message';
 import User from '../models/User';
-import { resolveContent } from 'nodemailer/lib/shared';
 
 const createRoom = async (req, res) => {
     const { senderId, receiverId } = req.body;
@@ -9,6 +8,14 @@ const createRoom = async (req, res) => {
     try {
         let chat = await ChatRoom.findOne({ users: [senderId, receiverId] });
         
+        if (chat) {
+            return res.status(200).json({
+                id: chat._id
+            });
+        }
+
+        chat = await ChatRoom.findOne({ users: [receiverId, senderId] });
+
         if (chat) {
             return res.status(200).json({
                 id: chat._id
