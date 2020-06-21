@@ -137,17 +137,45 @@
 /* Поиск */
 .chatWrapper .searchDiv {
     padding-left: 1.56em;
+    display: flex;
 }
-.chatWrapper .searchDiv input {
-  width: 16.3em;
+.chatWrapper .searchDiv div {
+    height: 100%;
+    background: #F7F8F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chatWrapper .searchDiv button {
+    font-size: .8em;
+    margin: .2em;
+    text-align: center;
+}
+.chatWrapper .searchDiv input[type=search] {
+  width: 12em;
   height: 2.5em;
   padding-left: 0.6em;
   border: none;
-  border-radius: 0.7em;
+  border-radius: 0.7em 0 0 0.7em;
   outline: none;
   background: #F7F8F9;
   color: #9E9C9C;
 }
+.chatWrapper .searchDiv input[type=submit] {
+    border: none;
+    outline: none;
+    border-radius: 0 0.7em 0.7em 0;
+    height: 100%;
+    background: rgb(235, 235, 235);
+    transition: ease-in-out .2s;
+    color: #757575;
+    font-weight: bold;
+}
+.chatWrapper .searchDiv input[type=submit]:hover {
+    background: rgb(219, 219, 219);
+    transition: ease-in-out .2s;
+}
+
 
 
 /* Диалоги */

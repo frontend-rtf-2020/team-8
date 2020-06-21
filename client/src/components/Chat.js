@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import setAuthToken from '../utils/setAuthToken';
+import { getAllRooms } from '../actions/chat';
 
 import Profile from './chat/Profile';
 import BurgerMenu from './chat/BurgerMenu';
@@ -17,7 +18,11 @@ if (localStorage.token) {
     setAuthToken(localStorage.token);
 }
 
-const Chat = ({ isAuthenticated, userData }) => {
+const Chat = ({ getAllRooms, isAuthenticated, userData }) => {
+
+    useEffect(() => {
+        getAllRooms();
+    }, [])
 
     if (!isAuthenticated)
         return <Redirect to='/' />
@@ -47,6 +52,7 @@ const Chat = ({ isAuthenticated, userData }) => {
 }
 
 Chat.propTypes = {
+    getAllRooms: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     userData: PropTypes.object.isRequired
 };
@@ -56,4 +62,4 @@ const mapStateToProps = state => ({
     userData: state.login.userData
 });
 
-export default connect(mapStateToProps)(Chat);
+export default connect(mapStateToProps, { getAllRooms })(Chat);

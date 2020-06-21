@@ -7,7 +7,15 @@ const createRoom = async (req, res) => {
     const { senderId, receiverId } = req.body;
 
     try {
-        const chat = new ChatRoom({
+        let chat = await ChatRoom.findOne({ users: [senderId, receiverId] });
+        
+        if (chat) {
+            return res.status(200).json({
+                id: chat._id
+            });
+        }
+        
+        chat = new ChatRoom({
             users: [senderId, receiverId],
             name: 'private chat'
         });
@@ -104,8 +112,6 @@ const messagesByRoomId = async (req, res, next, id) => {
 const getAllMessages = async (req, res) => {
     res.json(req.messages);
 };
-
-
 
 export default {
     createRoom,

@@ -1,36 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { getAllRooms } from '../../actions/chat';
 
 import Dialog from './Dialog';
 
-const Dialogs = ({ getAllRooms, rooms }) => {
-
-    useEffect(() => {
-        getAllRooms();
-    }, [])
+const Dialogs = ({ rooms, users, toSearchFor }) => {
 
     return (
         <div className="dialogs">
             {
-                rooms.map((room, index) =>
-                    <Dialog
-                        key={index}
-                        roomId={room._id}
-                        users={room.users}
-                    />)
+                toSearchFor !== '' ?
+                    users.map((user, index) => {
+                        if (user.login.includes(toSearchFor))
+                            return <Dialog key={index} user={user} />
+                    })
+                    :
+                    rooms.map((room, index) =>
+                        <Dialog
+                            key={index}
+                            roomId={room._id}
+                            users={room.users}
+                        />)
             }
         </div>
     );
 }
 
-Dialogs.propTypes = {
-    getAllRooms: PropTypes.func.isRequired
-};
-
 const mapStateToProps = state => ({
-    rooms: state.chat.rooms
+    rooms: state.chat.rooms,
+    users: state.chat.users,
+    toSearchFor: state.chat.toSearchFor
 });
 
-export default connect(mapStateToProps, { getAllRooms })(Dialogs);
+export default connect(mapStateToProps)(Dialogs);

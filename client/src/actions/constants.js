@@ -11,3 +11,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const GET_CHAT_ROOMS = 'GET_CHAT_ROOMS';
 export const GET_MESSAGES = 'GET_MESSAGES';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const SEARCH = 'SEARCH';
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';
+export const CREATE_CHAT = 'CREATE_CHAT';
