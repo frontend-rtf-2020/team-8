@@ -9,14 +9,22 @@ import Search from './chat/Search';
 import Dialogs from './chat/Dialogs';
 import Messages from './chat/Messages';
 import Input from './chat/Input';
+import io from "socket.io-client";
+
+
 
 import '../stylesheets/chat.css';
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
 }
+const socket = io('localhost:5000');
+
 
 const Chat = ({ isAuthenticated }) => {
+
+    console.log(socket);
+
 
     if (!isAuthenticated)
         return <Redirect to='/' />
