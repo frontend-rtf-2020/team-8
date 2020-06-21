@@ -158,7 +158,7 @@
 }
 /* Диалог */
 .chatWrapper .dialog {
-    padding: 1.25em;
+    padding: 1em;
     height: 3.125em;
     display: flex;
     transition: ease-in-out .3s;
@@ -184,16 +184,6 @@
     padding: 0.225em 0.625em;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-.chatWrapper .topInfo {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-.chatWrapper .bottomInfo {
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 .chatWrapper .check {

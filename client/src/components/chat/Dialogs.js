@@ -9,7 +9,7 @@ const Dialogs = ({ getAllRooms, rooms }) => {
 
     useEffect(() => {
         getAllRooms();
-    }, []);
+    }, [])
 
     return (
         <div className="dialogs">
@@ -26,8 +26,7 @@ const Dialogs = ({ getAllRooms, rooms }) => {
 }
 
 Dialogs.propTypes = {
-    getAllRooms: PropTypes.func.isRequired,
-    rooms: PropTypes.array.isRequired
+    getAllRooms: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
