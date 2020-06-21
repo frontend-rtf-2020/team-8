@@ -8,6 +8,7 @@ const Dialog = ({ createChat, clearSearch, getAllMessages, getAllRooms, user, us
     const onClick = e => {
         if (user) {
             createChat(userData._id, user._id).then(res => getAllRooms());
+            console.log('here')
             clearSearch();
         }
         else

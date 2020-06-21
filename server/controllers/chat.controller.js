@@ -7,7 +7,7 @@ const createRoom = async (req, res) => {
 
     try {
         let chat = await ChatRoom.findOne({ users: [senderId, receiverId] });
-        
+
         if (chat) {
             return res.status(200).json({
                 id: chat._id
@@ -21,7 +21,7 @@ const createRoom = async (req, res) => {
                 id: chat._id
             });
         }
-        
+
         chat = new ChatRoom({
             users: [senderId, receiverId],
             name: 'private chat'
@@ -46,15 +46,10 @@ const createRoom = async (req, res) => {
 
 const getAllRooms = async (req, res) => {
     try {
-        let rooms = [];
-        let users = [];
-        await ChatRoom.find({
-            users: req.user.id
-        }, (err, foundRooms) => {
-            foundRooms.forEach(room => {
-                room.users.splice(room.users.indexOf(req.user.id), 1);
-                rooms.push(room);
-            });
+        let rooms = await ChatRoom.find({ users: req.user.id });
+
+        rooms.forEach(room => {
+            room.users.splice(room.users.indexOf(req.user.id), 1);
         });
 
         for (let i = 0; i < rooms.length; i++) {
@@ -63,7 +58,11 @@ const getAllRooms = async (req, res) => {
                 rooms[i].users.splice(0, 1);
                 rooms[i].users.push(userData);
             }
+            console.log('1');
         }
+
+        console.log('2');
+        console.log(rooms);
 
         res.json(rooms);
     } catch (err) {

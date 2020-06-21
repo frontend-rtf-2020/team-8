@@ -8,7 +8,7 @@ import {
     CREATE_CHAT } from './constants';
 
 // Get all chat rooms
-export const getAllRooms = (id) => async dispatch => {
+export const getAllRooms = () => async dispatch => {
     try {
         const res = await axios.get('/chat/');
 
