@@ -235,7 +235,7 @@ const resend = async (req, res) => {
 //Get all the users in the database method
 const list = async (req, res) => {
   try {
-    const users = await User.find().select("id login email");
+    const users = await User.find().select('id login email');
 
     res.json(users);
   } catch (err) {

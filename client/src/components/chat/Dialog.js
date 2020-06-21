@@ -1,52 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getAllMessages } from '../../actions/chat';
-import axios from 'axios';
-import { set } from 'mongoose';
+import { getAllMessages, createChat, clearSearch, getAllRooms } from '../../actions/chat';
 
-const getData = users => {
-    return users.map(userId => (
-        axios.get('/api/user/' + userId)
-            .then(res => res.data)
-    ));
-}
+const Dialog = ({ createChat, clearSearch, getAllMessages, getAllRooms, user, users, roomId, userData }) => {
 
-const Dialog = ({ getAllMessages, users, roomId, userData }) => {
-    const [logins, setLogins] = useState([]);
-
-    useEffect(() => {
-        getData(users).forEach(promise => {
-            promise.then(user => {
-                console.log(user.login, userData.login)
-                setLogins([...logins, user.login]);
-            })
-        })
-    }, []);
+    const onClick = e => {
+        if (user) {
+            createChat(userData._id, user._id).then(res => getAllRooms());
+            clearSearch();
+        }
+        else
+            getAllMessages(roomId);
+    }
 
     return (
-        <div className="dialog" onClick={e => getAllMessages(roomId)}>
+        <div className="dialog" onClick={e => onClick(e)}>
             <div className="avatar" />
             <div className="infoDialog">
-                <div className="topInfo">
-                    <span className="name">user</span>
-                    <span className="info">...</span>
-                </div>
-                <div className="bottomInfo">
-                    <span className="info">...</span>
-                    <div className="check"></div>
-                </div>
+                {
+                    user ?
+                        <Fragment>
+                            <span className="name">{user.login}</span>
+                            <span>Написать пользователю...</span>
+                        </Fragment>
+                        :
+                        <Fragment>
+                            <span className="name">{users.map(user => user.login)}</span>
+                            <div className="check"></div>
+                        </Fragment>
+                }
             </div>
         </div>
     );
 };
 
 Dialog.propTypes = {
-    getAllMessages: PropTypes.func.isRequired
+    createChat: PropTypes.func.isRequired,
+    getAllMessages: PropTypes.func.isRequired,
+    clearSearch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
     userData: state.login.userData
 });
 
-export default connect(mapStateToProps, { getAllMessages })(Dialog);
+export default connect(mapStateToProps, { createChat, getAllMessages, clearSearch, getAllRooms })(Dialog);

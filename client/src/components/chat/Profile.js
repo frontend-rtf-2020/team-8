@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import ProtTypes from 'prop-types';
 import { takeDateFrom } from '../../utils/dataCorrector';
 
 const Profile = ({userData}) => (
@@ -24,12 +22,4 @@ const Profile = ({userData}) => (
     </div>
 );
 
-Profile.propTypes = {
-    userData: ProtTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-    userData: state.login.userData
-});
-
-export default connect(mapStateToProps)(Profile);
+export default Profile;

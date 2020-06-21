@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import setAuthToken from '../utils/setAuthToken';
+import { getAllRooms } from '../actions/chat';
+
 import Profile from './chat/Profile';
 import BurgerMenu from './chat/BurgerMenu';
 import Search from './chat/Search';
@@ -21,7 +23,11 @@ if (localStorage.token) {
 const socket = io('localhost:5000');
 
 
-const Chat = ({ isAuthenticated }) => {
+const Chat = ({ getAllRooms, isAuthenticated, userData }) => {
+
+    useEffect(() => {
+        getAllRooms();
+    }, [])
 
     console.log(socket);
 
@@ -31,17 +37,17 @@ const Chat = ({ isAuthenticated }) => {
 
     return (
         <div className="chatWrapper">
-            <Profile />
+            <Profile userData={userData}/>
             <div className="left">
                 <div className="header">
                     <BurgerMenu />
                     <Search />
                 </div>
-                <Dialogs />
+                <Dialogs/>
             </div>
             <div className="right">
                 <div className="status">
-                    <span className="name">Michel Lalala</span>
+                    <span className="name">{userData.login}</span>
                 </div>
                 <div className="main">
                     <Messages />
@@ -54,11 +60,14 @@ const Chat = ({ isAuthenticated }) => {
 }
 
 Chat.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired
+    getAllRooms: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    userData: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.login.isAuthenticated
+    isAuthenticated: state.login.isAuthenticated,
+    userData: state.login.userData
 });
 
-export default connect(mapStateToProps)(Chat);
+export default connect(mapStateToProps, { getAllRooms })(Chat);
